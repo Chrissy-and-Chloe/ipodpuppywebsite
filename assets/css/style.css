@@ -41,7 +41,7 @@ h1 {
   transform: scale(1.1);
 }
 
-.blue    { background-color: #6aa7ff; }
+.black   { background-color: #1e1e1e; color: #fff; }
 .rainbow { background-image: linear-gradient(to right, red, orange, yellow, green, blue, indigo, violet); }
 .yellow  { background-color: #fff475; color: black; }
 .orange  { background-color: #ffb347; }
