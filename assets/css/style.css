@@ -48,7 +48,7 @@ h1 {
 .silver { background-color: #aaa; color: black; }
 
 .floating-img {
-  width: 100px;
+  width: 300px;
   margin-top: 1em;
   animation: float 3s ease-in-out infinite;
 }
