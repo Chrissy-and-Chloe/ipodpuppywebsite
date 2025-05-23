@@ -2,17 +2,18 @@ body {
   background-color: #6aa7ff;
   color: white;
   font-family:
-  'Comic Neue',
-  'Comic Sans MS',
-  'Chalkboard SE',
-  'Baloo 2',
-  'Fredoka',
-  'Nunito',
-  'Quicksand',
-  'Segoe UI',
-  'Arial Rounded MT Bold',
-  'Tahoma',
-  'Verdana',
+    'Comic Neue',
+    'Comic Sans MS',
+    'Chalkboard SE',
+    'Baloo 2',
+    'Fredoka',
+    'Nunito',
+    'Quicksand',
+    'Segoe UI',
+    'Arial Rounded MT Bold',
+    'Tahoma',
+    'Verdana',
+    sans-serif;
   text-align: center;
   padding: 2em;
 }
