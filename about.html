@@ -1,1 +1,87 @@
+---
+layout: default
+title: About Me
+---
 
+<style>
+.about-wrapper {
+  background: url('/assets/images/skybg.jpg') no-repeat center center fixed;
+  background-size: cover;
+  color: black;
+  font-family: 'VT323', monospace;
+  font-size: 1.5em;
+  padding: 2em;
+  text-align: center;
+}
+
+.about-title {
+  font-size: 3em;
+  letter-spacing: 0.1em;
+  font-weight: bold;
+  font-family: 'Creepster', cursive;
+  margin-bottom: 0.5em;
+  color: black;
+  text-shadow: 2px 2px white;
+}
+
+.life-fun {
+  display: inline-block;
+  margin: 1em auto;
+  border: 5px solid black;
+  padding: 0.5em 1em;
+  background: white;
+  font-weight: bold;
+  font-size: 1.2em;
+  color: #ff00ff;
+  font-family: 'Comic Sans MS', cursive;
+}
+
+.about-columns {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  margin-top: 2em;
+  gap: 2em;
+}
+
+.about-column {
+  flex: 1;
+  min-width: 280px;
+  max-width: 400px;
+  text-align: left;
+  background: rgba(255,255,255,0.8);
+  padding: 1em;
+  border-radius: 1em;
+  box-shadow: 0 0 10px #999;
+}
+
+.about-dog {
+  display: block;
+  margin: 2em auto;
+  max-width: 200px;
+  image-rendering: pixelated;
+  border-radius: 10px;
+}
+</style>
+
+<div class="about-wrapper">
+  <h1 class="about-title">ABOUT ME</h1>
+
+  <div class="life-fun">😊 Life Is Fun! 😊</div>
+
+  <div class="about-columns">
+    <div class="about-column">
+      <p>1. im ipodpuppy. im 22 & my fav color is green</p>
+      <p>2. in vegas... am a lesbian.. let’s not complicate things..</p>
+      <p>3. i love teaching!</p>
+    </div>
+
+    <img class="about-dog" src="/assets/images/aboutdog.gif" alt="gif of dog" />
+
+    <div class="about-column">
+      <p>4. currently developing a personal lore that reads like the footnotes of a goosebumps book</p>
+      <p>5. im ipodpuppy lolll</p>
+      <p>6. brohoof! /)</p>
+    </div>
+  </div>
+</div>
