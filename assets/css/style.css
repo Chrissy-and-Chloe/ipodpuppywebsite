@@ -73,3 +73,27 @@ h1 {
   margin: 0 auto;
   padding: 1em;
 }
+
+.post-feed {
+  max-width: 700px;
+  margin: 2em auto;
+  text-align: left;
+  padding: 1em;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+}
+
+.post-preview {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+  padding-bottom: 1em;
+  margin-bottom: 1em;
+}
+
+.post-preview h2 {
+  font-size: 1.5em;
+  margin-bottom: 0.3em;
+}
+
+.post-preview p {
+  color: #eee;
+}
