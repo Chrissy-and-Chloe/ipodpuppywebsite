@@ -150,3 +150,7 @@ h1 {
   font-weight: bold;
   color: #ffc3ec;
 }
+
+header, footer {
+  text-align: center;
+}
