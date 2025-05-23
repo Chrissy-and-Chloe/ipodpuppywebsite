@@ -41,11 +41,12 @@ h1 {
   transform: scale(1.1);
 }
 
-.blue { background-color: #2b5cd6; }
+.blue    { background-color: #6aa7ff; }
 .rainbow { background-image: linear-gradient(to right, red, orange, yellow, green, blue, indigo, violet); }
-.bold-blue { background-color: #1b1bb4; font-weight: bold; }
-.orange { background-color: #ff5e00; }
-.silver { background-color: #aaa; color: black; }
+.yellow  { background-color: #fff475; color: black; }
+.orange  { background-color: #ffb347; }
+.silver  { background-color: #ccc; color: black; }
+.comics  { background-color: #c793f7; }
 
 .floating-img {
   width: 300px;
