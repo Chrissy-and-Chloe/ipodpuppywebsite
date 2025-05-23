@@ -23,11 +23,13 @@
 
     {% if page.url == '/' %}
       <img src="/assets/images/ipod.png" alt="iPod Puppy" class="floating-img">
-      <p class="homepage-statement">😊 life is fun! 😊</p>
     {% endif %}
   </header>
 
   {% if page.url == '/' %}
+
+   <p class="tagline">{{ page.description }}</p>
+  
     <nav class="main-menu">
       <a href="{{ '/' | relative_url }}" class="menu-btn black">Home</a>
       <a href="{{ '/blog.html' | relative_url }}" class="menu-btn rainbow">Blog</a>
@@ -37,7 +39,6 @@
       <a href="{{ '/contact.html' | relative_url }}" class="menu-btn silver">Contact</a>
     </nav>
 
-    <p class="tagline">{{ page.description }}</p>
   {% else %}
     <p class="tagline">{{ page.description }}</p>
 
