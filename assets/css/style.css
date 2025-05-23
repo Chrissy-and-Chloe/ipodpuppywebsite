@@ -154,3 +154,7 @@ h1 {
 header, footer {
   text-align: center;
 }
+
+h1, h2, h3, .menu-btn, .site-banner, .tagline {
+  font-family: inherit;
+}
