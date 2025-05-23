@@ -9,22 +9,26 @@
 </head>
 <body>
 
-<main class="container">
-    <h1>{{ page.title }}</h1> <!-- 👈 This renders the page-specific title -->
-  
+  <header class="site-banner">
+    <h1>{{ page.title }}</h1>
+  </header>
+
   <nav class="main-menu">
-    <nav class="main-menu">
-      <a href="{{ '/' | relative_url }}" class="menu-btn black">Home</a>
-      <a href="{{ '/blog.html' | relative_url }}" class="menu-btn rainbow">Blog</a>
-      <a href="{{ '/about.html' | relative_url }}" class="menu-btn yellow">About Me</a>
-      <a href="{{ '/commissions.html' | relative_url }}" class="menu-btn orange">Commissions</a>
-      <a href="{{ '/comics.html' | relative_url }}" class="menu-btn comics">Comics</a>
-      <a href="{{ '/contact.html' | relative_url }}" class="menu-btn silver">Contact</a>
-</nav>
+    <a href="{{ '/' | relative_url }}" class="menu-btn black">Home</a>
+    <a href="{{ '/blog.html' | relative_url }}" class="menu-btn rainbow">Blog</a>
+    <a href="{{ '/about.html' | relative_url }}" class="menu-btn yellow">About Me</a>
+    <a href="{{ '/commissions.html' | relative_url }}" class="menu-btn orange">Commissions</a>
+    <a href="{{ '/comics.html' | relative_url }}" class="menu-btn comics">Comics</a>
+    <a href="{{ '/contact.html' | relative_url }}" class="menu-btn silver">Contact</a>
   </nav>
-  
+
   <main class="container">
     {{ content }}
   </main>
+
+  <footer>
+    <p class="footer-note">© 2025 ipodpuppy14. All rights reserved.</p>
+  </footer>
+
 </body>
 </html>
