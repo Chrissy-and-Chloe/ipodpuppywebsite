@@ -16,20 +16,40 @@
     }
   </style>
 </head>
-<body>
+<body class="{% if page.url == '/' %}home{% endif %}">
 
   <header class="site-banner">
     <h1>{{ page.title }}</h1>
+
+    {% if page.url == '/' %}
+      <img src="/assets/images/ipod.png" alt="iPod Puppy" class="floating-img">
+      <p class="homepage-statement">😊 life is fun! 😊</p>
+    {% endif %}
   </header>
 
-  <nav class="main-menu">
-    <a href="{{ '/' | relative_url }}" class="menu-btn black">Home</a>
-    <a href="{{ '/blog.html' | relative_url }}" class="menu-btn rainbow">Blog</a>
-    <a href="{{ '/about.html' | relative_url }}" class="menu-btn yellow">About Me</a>
-    <a href="{{ '/commissions.html' | relative_url }}" class="menu-btn orange">Commissions</a>
-    <a href="{{ '/comics.html' | relative_url }}" class="menu-btn comics">Comics</a>
-    <a href="{{ '/contact.html' | relative_url }}" class="menu-btn silver">Contact</a>
-  </nav>
+  {% if page.url == '/' %}
+    <nav class="main-menu">
+      <a href="{{ '/' | relative_url }}" class="menu-btn black">Home</a>
+      <a href="{{ '/blog.html' | relative_url }}" class="menu-btn rainbow">Blog</a>
+      <a href="{{ '/about.html' | relative_url }}" class="menu-btn yellow">About Me</a>
+      <a href="{{ '/commissions.html' | relative_url }}" class="menu-btn orange">Commissions</a>
+      <a href="{{ '/comics.html' | relative_url }}" class="menu-btn comics">Comics</a>
+      <a href="{{ '/contact.html' | relative_url }}" class="menu-btn silver">Contact</a>
+    </nav>
+
+    <p class="tagline">{{ page.description }}</p>
+  {% else %}
+    <p class="tagline">{{ page.description }}</p>
+
+    <nav class="main-menu">
+      <a href="{{ '/' | relative_url }}" class="menu-btn black">Home</a>
+      <a href="{{ '/blog.html' | relative_url }}" class="menu-btn rainbow">Blog</a>
+      <a href="{{ '/about.html' | relative_url }}" class="menu-btn yellow">About Me</a>
+      <a href="{{ '/commissions.html' | relative_url }}" class="menu-btn orange">Commissions</a>
+      <a href="{{ '/comics.html' | relative_url }}" class="menu-btn comics">Comics</a>
+      <a href="{{ '/contact.html' | relative_url }}" class="menu-btn silver">Contact</a>
+    </nav>
+  {% endif %}
 
   <main class="container">
     {{ content }}
