@@ -49,7 +49,10 @@ h1 {
 
 .floating-img {
   width: 300px;
-  margin-top: 1em;
+  max-width: 90vw;     /* Prevents overflow on mobile */
+  height: auto;        /* Maintains aspect ratio */
+  display: block;
+  margin: 1.5em auto;  /* Centers it and adds space */
   animation: float 3s ease-in-out infinite;
 }
 
