@@ -37,10 +37,10 @@ h1, h2, h3, .menu-btn, .site-banner, .tagline {
 .main-menu {
   margin-top: 2em;
   display: flex;
-  flex-wrap: nowrap;           /* 🚨 Prevent wrapping */
+  flex-wrap: nowrap;
   justify-content: center;
   gap: 1em;
-  overflow-x: auto;            /* 🚨 Scroll if too narrow */
+  overflow-x: auto;
 }
 
 .menu-btn {
@@ -52,7 +52,7 @@ h1, h2, h3, .menu-btn, .site-banner, .tagline {
   color: white;
   box-shadow: 2px 2px 5px rgba(0,0,0,0.3);
   transition: transform 0.2s ease-in-out;
-  white-space: nowrap;          /* 🚨 Prevent text wrapping */
+  white-space: nowrap;
 }
 
 .menu-btn:hover {
@@ -119,16 +119,15 @@ header, footer {
   gap: 2em;
 }
 
-/* 🚨 Updated .post-preview to match the retro computer window style */
 .post-preview {
-  background-color: #f0f0f0;                 /* Light gray background */
-  border: 2px solid #000;                   /* Black border */
-  border-radius: 5px;                       /* Slight rounding */
-  font-family: 'Courier New', monospace;    /* Retro font */
-  padding: 1em;                             /* Internal spacing */
-  box-shadow: 5px 5px 0 #333;              /* Offset shadow */
-  color: #000;                              /* Black text */
-  transition: transform 0.3s ease-in-out;   /* Smooth lift on hover */
+  background-color: #f0f0f0;
+  border: 2px solid #000;
+  border-radius: 5px;
+  font-family: 'Courier New', monospace;
+  padding: 1em;
+  box-shadow: 5px 5px 0 #333;
+  color: #000;
+  transition: transform 0.3s ease-in-out;
 }
 
 .post-preview:hover {
@@ -138,10 +137,10 @@ header, footer {
 
 .post-preview h2 {
   font-size: 1.3em;
-  background-color: #000088;                /* Deep blue header */
+  background-color: #000088;
   color: #fff;
   padding: 0.3em;
-  margin: -1em -1em 1em -1em;              /* Extend header */
+  margin: -1em -1em 1em -1em;
   border-bottom: 2px solid #000;
 }
 
@@ -155,14 +154,14 @@ header, footer {
 }
 
 .post-preview small {
-  color: #333;                              /* Dark gray for date */
+  color: #333;
   display: block;
   margin-bottom: 0.5em;
 }
 
 .post-preview p {
-  color: #000;                              /* Black for body text */
-  font-family: 'Courier New', monospace;    /* Keep retro font */
+  color: #000;
+  font-family: 'Courier New', monospace;
 }
 
 .comic-feed {
@@ -218,7 +217,6 @@ header, footer {
   image-rendering: pixelated;
 }
 
-/* 🔥 Now only apply the vertical menu on small screens */
 @media (max-width: 600px) {
   .site-banner h1 {
     font-size: 1.5em;
@@ -227,7 +225,7 @@ header, footer {
     font-size: 1em;
   }
   .main-menu {
-    flex-direction: column;   /* 🚨 Stack vertically on phones only */
+    flex-direction: column;
     gap: 0.5em;
   }
   .home-bottom-gif img {
@@ -241,36 +239,51 @@ header, footer {
 
 @media (min-width: 992px) {
   .main-menu {
-    flex-direction: row !important;    /* 🔥 Force horizontal layout */
-    flex-wrap: nowrap !important;      /* 🔥 Prevent wrapping */
-    overflow-x: auto;                  /* Optional: Allow horizontal scroll if too wide */
+    flex-direction: row !important;
+    flex-wrap: nowrap !important;
+    overflow-x: auto;
   }
-
   .menu-btn {
-    white-space: nowrap !important;    /* 🔥 Prevent text wrapping inside buttons */
+    white-space: nowrap !important;
   }
 }
 
-/* 🎨 Stylish blog post container */
 .blog-post {
-  background: rgba(255, 255, 255, 0.15);  /* Soft transparent background */
-  border-radius: 15px;                    /* Rounded corners */
-  padding: 1.5em;                         /* Internal spacing */
-  margin-bottom: 2em;                     /* Space between posts */
-  box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.3); /* Subtle shadow */
-  transition: transform 0.3s ease-in-out; /* Optional: lift on hover */
+  background: rgba(255, 255, 255, 0.15);
+  border-radius: 15px;
+  padding: 1.5em;
+  margin-bottom: 2em;
+  box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.3);
+  transition: transform 0.3s ease-in-out;
 }
 
 .blog-post:hover {
-  transform: translateY(-5px);            /* Slight lift on hover */
+  transform: translateY(-5px);
 }
 
 .blog-post h3 {
-  color: #ff66aa;                         /* Vibrant heading color */
-  text-shadow: 1px 1px #000;             /* Fun text shadow */
+  color: #ff66aa;
+  text-shadow: 1px 1px #000;
   margin-bottom: 0.5em;
 }
 
 .blog-post p {
-  color: #fffbe6;                         /* Light text */
+  color: #fffbe6;
+}
+
+/* 🌟 Added fix for long text/links on posts */
+article, .post-content {
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+}
+
+article p, .post-content p {
+  word-break: break-word;
+}
+
+article pre, .post-content pre, 
+article code, .post-content code {
+  white-space: pre-wrap;
+  word-wrap: break-word;
+  overflow-x: auto;
 }
