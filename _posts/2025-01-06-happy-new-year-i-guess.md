@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "New Year’s Disappointments and Self-Reflection"
+title: "New Year, I guess?"
 date: 2025-01-06
 ---
 
