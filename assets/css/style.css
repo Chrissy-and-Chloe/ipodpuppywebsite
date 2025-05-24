@@ -220,3 +220,27 @@ header, footer {
     white-space: nowrap !important;    /* 🔥 Prevent text wrapping inside buttons */
   }
 }
+
+/* 🎨 Stylish blog post container */
+.blog-post {
+  background: rgba(255, 255, 255, 0.15);  /* Soft transparent background */
+  border-radius: 15px;                    /* Rounded corners */
+  padding: 1.5em;                         /* Internal spacing */
+  margin-bottom: 2em;                     /* Space between posts */
+  box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.3); /* Subtle shadow */
+  transition: transform 0.3s ease-in-out; /* Optional: lift on hover */
+}
+
+.blog-post:hover {
+  transform: translateY(-5px);            /* Slight lift on hover */
+}
+
+.blog-post h3 {
+  color: #ff66aa;                         /* Vibrant heading color */
+  text-shadow: 1px 1px #000;             /* Fun text shadow */
+  margin-bottom: 0.5em;
+}
+
+.blog-post p {
+  color: #fffbe6;                         /* Light text */
+}
