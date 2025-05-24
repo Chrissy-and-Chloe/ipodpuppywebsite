@@ -9,19 +9,24 @@ title: About Me
   background-size: cover;
   color: black;
   font-family: 'VT323', monospace;
-  font-size: 1.5em;
+  font-size: 1.2em;
   padding: 2em;
   text-align: center;
+  box-sizing: border-box;
+  max-width: 100%;
+  overflow-x: hidden;
 }
 
 .about-title {
-  font-size: 3em;
+  font-size: 2.5em;
   letter-spacing: 0.1em;
   font-weight: bold;
   font-family: 'Creepster', cursive;
   margin-bottom: 0.5em;
   color: black;
   text-shadow: 2px 2px white;
+  word-wrap: break-word;           /* Ensure long titles wrap */
+  overflow-wrap: break-word;
 }
 
 .life-fun {
@@ -39,20 +44,24 @@ title: About Me
 .about-columns {
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-around;
+  justify-content: center;         /* Center columns */
   margin-top: 2em;
   gap: 2em;
+  max-width: 100%;
+  box-sizing: border-box;
 }
 
 .about-column {
   flex: 1;
-  min-width: 280px;
-  max-width: 400px;
+  min-width: 250px;
+  max-width: 350px;
   text-align: left;
-  background: rgba(255,255,255,0.8);
+  background: rgba(255,255,255,0.85);
   padding: 1em;
   border-radius: 1em;
-  box-shadow: 0 0 10px #999;
+  box-shadow: 5px 5px 0 #333;
+  word-wrap: break-word;           /* Prevent text overflow */
+  overflow-wrap: break-word;
 }
 
 .about-dog {
@@ -62,10 +71,27 @@ title: About Me
   image-rendering: pixelated;
   border-radius: 10px;
 }
+
+@media (max-width: 600px) {
+  .about-wrapper {
+    font-size: 1em;
+    padding: 1em;
+  }
+  .about-title {
+    font-size: 1.8em;
+  }
+  .about-columns {
+    flex-direction: column;
+    align-items: center;
+  }
+  .about-column {
+    max-width: 90%;
+  }
+}
 </style>
 
 <div class="about-wrapper">
-
+  <h1 class="about-title">About Me</h1>
   <div class="about-columns">
     <div class="about-column">
       <p>1. im ipodpuppy. im 22 & my fav color is green</p>
@@ -80,8 +106,7 @@ title: About Me
       <p>5. im ipodpuppy lolll</p>
       <p>6. brohoof! /)</p>
     </div>
-
-    <div class="life-fun">😊 Life Is Fun! 😊</div>
-    
   </div>
+
+  <div class="life-fun">😊 Life Is Fun! 😊</div>
 </div>
