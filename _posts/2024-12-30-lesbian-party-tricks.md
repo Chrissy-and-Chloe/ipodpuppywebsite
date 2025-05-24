@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Fish Out of Water: Grills, Community, and Boundaries"
+title: "Lesbian party tricks"
 date: 2024-12-30
 ---
 
