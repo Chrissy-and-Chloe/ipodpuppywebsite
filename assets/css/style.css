@@ -294,3 +294,24 @@ blockquote, pre, code {
   word-wrap: break-word;           /* Break words if too long */
   overflow-wrap: break-word;       /* Also handle long URLs/words */
 }
+
+/* 📏 Ensure long text wraps correctly in blog content */
+.post-content p, 
+.post-content blockquote, 
+.post-content pre, 
+.post-content code {
+  white-space: pre-wrap !important;       /* Allow wrapping of preformatted text */
+  word-wrap: break-word !important;       /* Break words that are too long */
+  overflow-wrap: break-word !important;   /* Support legacy + modern */
+  max-width: 100% !important;             /* Prevent extending outside container */
+  box-sizing: border-box;                 /* Include padding/border in width */
+}
+
+/* Optional: Make blockquotes a bit prettier and distinct */
+.post-content blockquote {
+  border-left: 4px solid #ccc;
+  margin-left: 0;
+  padding-left: 1em;
+  color: #fffbe6;
+  font-style: italic;
+}
