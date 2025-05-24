@@ -37,9 +37,10 @@ h1, h2, h3, .menu-btn, .site-banner, .tagline {
 .main-menu {
   margin-top: 2em;
   display: flex;
-  flex-wrap: wrap;
+  flex-wrap: nowrap;          /* 🚨 Added: Prevent wrapping */
   justify-content: center;
   gap: 1em;
+  overflow-x: auto;           /* 🚨 Added: Allow horizontal scrolling if needed */
 }
 
 .menu-btn {
@@ -51,6 +52,7 @@ h1, h2, h3, .menu-btn, .site-banner, .tagline {
   color: white;
   box-shadow: 2px 2px 5px rgba(0,0,0,0.3);
   transition: transform 0.2s ease-in-out;
+  white-space: nowrap;        /* 🚨 Added: Prevent text from wrapping inside buttons */
 }
 
 .menu-btn:hover {
