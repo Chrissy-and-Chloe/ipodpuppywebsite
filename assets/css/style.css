@@ -208,3 +208,15 @@ header, footer {
     font-size: 1em;
   }
 }
+
+@media (min-width: 992px) {
+  .main-menu {
+    flex-direction: row !important;    /* 🔥 Force horizontal layout */
+    flex-wrap: nowrap !important;      /* 🔥 Prevent wrapping */
+    overflow-x: auto;                  /* Optional: Allow horizontal scroll if too wide */
+  }
+
+  .menu-btn {
+    white-space: nowrap !important;    /* 🔥 Prevent text wrapping inside buttons */
+  }
+}
