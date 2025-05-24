@@ -142,6 +142,12 @@ header, footer {
   padding: 0.3em;
   margin: -1em -1em 1em -1em;
   border-bottom: 2px solid #000;
+
+  /* 🌟 Added to handle long words properly */
+  word-break: break-word;
+  overflow-wrap: break-word;
+  max-width: 100%;
+  box-sizing: border-box;
 }
 
 .post-preview h2 a {
