@@ -112,27 +112,57 @@ header, footer {
 }
 
 .post-feed {
-  max-width: 700px;
+  max-width: 800px;
   margin: 2em auto;
-  text-align: left;
-  padding: 1em;
-  background: rgba(255, 255, 255, 0.1);
-  border-radius: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 2em;
 }
 
+/* 🚨 Updated .post-preview to match the retro computer window style */
 .post-preview {
-  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
-  padding-bottom: 1em;
-  margin-bottom: 1em;
+  background-color: #f0f0f0;                 /* Light gray background */
+  border: 2px solid #000;                   /* Black border */
+  border-radius: 5px;                       /* Slight rounding */
+  font-family: 'Courier New', monospace;    /* Retro font */
+  padding: 1em;                             /* Internal spacing */
+  box-shadow: 5px 5px 0 #333;              /* Offset shadow */
+  color: #000;                              /* Black text */
+  transition: transform 0.3s ease-in-out;   /* Smooth lift on hover */
+}
+
+.post-preview:hover {
+  transform: translateY(-5px);
+  box-shadow: 7px 7px 0 #333;
 }
 
 .post-preview h2 {
-  font-size: 1.5em;
-  margin-bottom: 0.3em;
+  font-size: 1.3em;
+  background-color: #000088;                /* Deep blue header */
+  color: #fff;
+  padding: 0.3em;
+  margin: -1em -1em 1em -1em;              /* Extend header */
+  border-bottom: 2px solid #000;
+}
+
+.post-preview h2 a {
+  color: #fff;
+  text-decoration: none;
+}
+
+.post-preview h2 a:hover {
+  text-decoration: underline;
+}
+
+.post-preview small {
+  color: #333;                              /* Dark gray for date */
+  display: block;
+  margin-bottom: 0.5em;
 }
 
 .post-preview p {
-  color: #eee;
+  color: #000;                              /* Black for body text */
+  font-family: 'Courier New', monospace;    /* Keep retro font */
 }
 
 .comic-feed {
