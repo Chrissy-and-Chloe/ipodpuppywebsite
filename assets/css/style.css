@@ -287,3 +287,10 @@ article code, .post-content code {
   word-wrap: break-word;
   overflow-x: auto;
 }
+
+/* Fix wrapping for long lines in quotes and pre blocks */
+blockquote, pre, code {
+  white-space: pre-wrap;           /* Preserve formatting but wrap lines */
+  word-wrap: break-word;           /* Break words if too long */
+  overflow-wrap: break-word;       /* Also handle long URLs/words */
+}
