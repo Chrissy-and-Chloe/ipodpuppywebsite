@@ -37,10 +37,10 @@ h1, h2, h3, .menu-btn, .site-banner, .tagline {
 .main-menu {
   margin-top: 2em;
   display: flex;
-  flex-wrap: nowrap;          /* 🚨 Added: Prevent wrapping */
+  flex-wrap: nowrap;           /* 🚨 Prevent wrapping */
   justify-content: center;
   gap: 1em;
-  overflow-x: auto;           /* 🚨 Added: Allow horizontal scrolling if needed */
+  overflow-x: auto;            /* 🚨 Scroll if too narrow */
 }
 
 .menu-btn {
@@ -52,7 +52,7 @@ h1, h2, h3, .menu-btn, .site-banner, .tagline {
   color: white;
   box-shadow: 2px 2px 5px rgba(0,0,0,0.3);
   transition: transform 0.2s ease-in-out;
-  white-space: nowrap;        /* 🚨 Added: Prevent text from wrapping inside buttons */
+  white-space: nowrap;          /* 🚨 Prevent text wrapping */
 }
 
 .menu-btn:hover {
@@ -183,32 +183,22 @@ header, footer {
 .home-bottom-gif img {
   display: inline-block;
   width: 100%;
-  max-width: 400px;  /* default desktop size */
+  max-width: 400px;
   height: auto;
   image-rendering: pixelated;
 }
 
-/* Tablet (portrait) */
-@media (max-width: 991px) {
-  .site-banner h1 {
-    font-size: 2em;
-  }
-  .main-menu {
-    flex-direction: column;
-    gap: 0.5em;
-  }
-  .home-bottom-gif img {
-    max-width: 300px;
-  }
-}
-
-/* Mobile (phones) */
+/* 🔥 Now only apply the vertical menu on small screens */
 @media (max-width: 600px) {
   .site-banner h1 {
     font-size: 1.5em;
   }
   .tagline {
     font-size: 1em;
+  }
+  .main-menu {
+    flex-direction: column;   /* 🚨 Stack vertically on phones only */
+    gap: 0.5em;
   }
   .home-bottom-gif img {
     max-width: 220px;
