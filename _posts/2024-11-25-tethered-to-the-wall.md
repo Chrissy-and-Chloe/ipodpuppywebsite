@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Early Days and Resolutions"
+title: "Tethered to the wall"
 date: 2024-11-25
 ---
 
