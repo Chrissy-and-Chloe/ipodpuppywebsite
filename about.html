@@ -1,54 +1,56 @@
 ---
 layout: default
-title: About Me
+title: 💾 About Me 💾 
 ---
 
 <style>
 .about-wrapper {
-  background: url('/assets/images/skybg.jpg') no-repeat center center fixed;
-  background-size: cover;
-  color: black;
-  font-family: 'VT323', monospace;
+  background: linear-gradient(135deg, #c2e9fb 0%, #a1c4fd 100%);
+  color: #333;
+  font-family: 'Trebuchet MS', 'Verdana', 'Arial', sans-serif;
   font-size: 1.2em;
   padding: 2em;
   text-align: center;
-  box-sizing: border-box;
   max-width: 100%;
   overflow-x: hidden;
+  border: 4px double #000;
+  border-radius: 20px;
+  box-shadow: 10px 10px 20px rgba(0,0,0,0.3);
 }
 
 .about-title {
   font-size: 2.5em;
   letter-spacing: 0.1em;
   font-weight: bold;
-  font-family: 'Creepster', cursive;
+  color: #4b0082;
+  text-shadow: 2px 2px 5px #ccc;
+  background: linear-gradient(to right, #f8ffae, #43c6ac);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
   margin-bottom: 0.5em;
-  color: black;
-  text-shadow: 2px 2px white;
-  word-wrap: break-word;           /* Ensure long titles wrap */
-  overflow-wrap: break-word;
 }
 
 .life-fun {
   display: inline-block;
   margin: 1em auto;
-  border: 5px solid black;
+  border: 3px solid #00ffff;
   padding: 0.5em 1em;
-  background: white;
+  background: #fff0f5;
   font-weight: bold;
-  font-size: 1.2em;
-  color: #ff00ff;
-  font-family: 'Comic Sans MS', cursive;
+  font-size: 1.4em;
+  color: #ff1493;
+  font-family: 'Trebuchet MS', 'Verdana', sans-serif;
+  box-shadow: 2px 2px 10px #888;
+  border-radius: 15px;
 }
 
 .about-columns {
   display: flex;
   flex-wrap: wrap;
-  justify-content: center;         /* Center columns */
+  justify-content: center;
   margin-top: 2em;
-  gap: 2em;
+  gap: 1.5em;
   max-width: 100%;
-  box-sizing: border-box;
 }
 
 .about-column {
@@ -56,20 +58,29 @@ title: About Me
   min-width: 250px;
   max-width: 350px;
   text-align: left;
-  background: rgba(255,255,255,0.85);
+  background: rgba(255, 255, 255, 0.8);
   padding: 1em;
-  border-radius: 1em;
-  box-shadow: 5px 5px 0 #333;
-  word-wrap: break-word;           /* Prevent text overflow */
+  border-radius: 20px;
+  border: 2px solid #4b0082;
+  box-shadow: 8px 8px 15px rgba(0,0,0,0.2);
+  word-wrap: break-word;
   overflow-wrap: break-word;
+  font-family: 'Trebuchet MS', 'Verdana', sans-serif;
+  font-size: 1em;
+  backdrop-filter: blur(10px);
+}
+
+.about-column p {
+  margin-bottom: 1em;
 }
 
 .about-dog {
   display: block;
   margin: 2em auto;
   max-width: 200px;
-  image-rendering: pixelated;
-  border-radius: 10px;
+  border-radius: 20px;
+  box-shadow: 5px 5px 15px #333;
+  border: 3px solid #00ffff;
 }
 
 @media (max-width: 600px) {
@@ -78,7 +89,7 @@ title: About Me
     padding: 1em;
   }
   .about-title {
-    font-size: 1.8em;
+    font-size: 2em;
   }
   .about-columns {
     flex-direction: column;
@@ -91,22 +102,22 @@ title: About Me
 </style>
 
 <div class="about-wrapper">
-  <h1 class="about-title">About Me</h1>
+  
   <div class="about-columns">
     <div class="about-column">
-      <p>1. im ipodpuppy. im 22 & my fav color is green</p>
-      <p>2. in vegas... am a lesbian.. let’s not complicate things..</p>
-      <p>3. i love teaching!</p>
+      <p>🌟 1. im ipodpuppy. im 22 & my fav color is green</p>
+      <p>🌃 2. based in vegas... am a lesbian.. let’s not complicate things..</p>
+      <p>📚 3. i love teaching and exploring ideas!</p>
     </div>
 
-    <img class="about-dog" src="/assets/images/aboutdog.png" alt="png of dog" />
-    
+    <img class="about-dog" src="/assets/images/aboutdog.png" alt="A cute dog pic" />
+
     <div class="about-column">
-      <p>4. currently developing a personal lore that reads like the footnotes of a goosebumps book</p>
-      <p>5. im ipodpuppy lolll</p>
-      <p>6. brohoof! /)</p>
+      <p>🌀 4. currently developing lore that reads like a y2k-era AIM chat log</p>
+      <p>🎶 5. im ipodpuppy lolz</p>
+      <p>💖 6. brohoof & nostalgia vibes /)</p>
     </div>
   </div>
 
-  <div class="life-fun">😊 Life Is Fun! 😊</div>
+  <div class="life-fun">💿 Life is Fun! 💿</div>
 </div>
