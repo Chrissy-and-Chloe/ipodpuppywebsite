@@ -288,6 +288,25 @@ article code, .post-content code {
   overflow-x: auto;
 }
 
+.blog-header {
+  background-color: #000088;              /* Retro deep blue background */
+  color: #fff;                            /* White text */
+  border: 2px solid #000;                 /* Black border like posts */
+  border-radius: 5px;                     /* Slight rounding */
+  font-family: 'Courier New', monospace;  /* Retro font */
+  padding: 1em;                           /* Padding for spacing */
+  box-shadow: 5px 5px 0 #333;            /* Offset shadow for depth */
+  margin: 2em auto;                       /* Space above blog posts */
+  max-width: 800px;                       /* Match blog post width */
+  text-align: center;                     /* Center text */
+}
+
+.blog-header h2 {
+  margin: 0;
+  font-size: 1.8em;                       /* Slightly bigger for header */
+}
+
+
 /* Fix wrapping for long lines in quotes and pre blocks */
 blockquote, pre, code {
   white-space: pre-wrap;           /* Preserve formatting but wrap lines */
@@ -316,20 +335,3 @@ blockquote, pre, code {
   font-style: italic;
 }
 
-.blog-header {
-  background-color: #000088;              /* Retro deep blue background */
-  color: #fff;                            /* White text */
-  border: 2px solid #000;                 /* Black border like posts */
-  border-radius: 5px;                     /* Slight rounding */
-  font-family: 'Courier New', monospace;  /* Retro font */
-  padding: 1em;                           /* Padding for spacing */
-  box-shadow: 5px 5px 0 #333;            /* Offset shadow for depth */
-  margin: 2em auto;                       /* Space above blog posts */
-  max-width: 800px;                       /* Match blog post width */
-  text-align: center;                     /* Center text */
-}
-
-.blog-header h2 {
-  margin: 0;
-  font-size: 1.8em;                       /* Slightly bigger for header */
-}
