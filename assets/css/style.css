@@ -24,6 +24,10 @@ h1 {
   color: yellow;
 }
 
+h1, h2, h3, .menu-btn, .site-banner, .tagline {
+  font-family: inherit;
+}
+
 .tagline {
   font-size: 1.2em;
   margin-top: 0.5em;
@@ -60,12 +64,17 @@ h1 {
 .silver  { background-color: #ccc; color: black; }
 .comics  { background-color: #c793f7; }
 
+.floating-img, img {
+  max-width: 100%;
+  height: auto;
+  image-rendering: pixelated;
+}
+
 .floating-img {
   width: 300px;
-  max-width: 90vw;     /* Prevents overflow on mobile */
-  height: auto;        /* Maintains aspect ratio */
+  max-width: 90vw;
   display: block;
-  margin: 1.5em auto;  /* Centers it and adds space */
+  margin: 1.5em auto;
   animation: float 3s ease-in-out infinite;
 }
 
@@ -74,17 +83,30 @@ h1 {
   50% { transform: translateY(-10px); }
 }
 
+.container {
+  max-width: 1000px;
+  width: 90%;
+  margin: 0 auto;
+  padding: 1em;
+}
+
+header, footer {
+  text-align: center;
+}
+
 .footer-note {
   margin-top: 3em;
   font-size: 0.9em;
   opacity: 0.8;
 }
 
-.container {
-  max-width: 1000px;  /* Or larger if you want */
-  width: 90%;
-  margin: 0 auto;
-  padding: 1em;
+.crt-note {
+  text-align: center;
+  font-size: 1em;
+  margin-top: 3em;
+  margin-bottom: 1em;
+  color: #fffbe6;
+  font-style: italic;
 }
 
 .post-feed {
@@ -151,30 +173,28 @@ h1 {
   color: #ffc3ec;
 }
 
-header, footer {
-  text-align: center;
-}
-
-h1, h2, h3, .menu-btn, .site-banner, .tagline {
-  font-family: inherit;
-}
-
 .home-bottom-gif {
   text-align: center;
   margin-top: 2em;
-  margin-bottom: 2em;
 }
 
 .home-bottom-gif img {
   display: inline-block;
   width: 100%;
-  max-width: 400px;         /* default for desktop */
+  max-width: 400px;  /* default desktop size */
   height: auto;
   image-rendering: pixelated;
 }
 
 /* Tablet (portrait) */
 @media (max-width: 991px) {
+  .site-banner h1 {
+    font-size: 2em;
+  }
+  .main-menu {
+    flex-direction: column;
+    gap: 0.5em;
+  }
   .home-bottom-gif img {
     max-width: 300px;
   }
@@ -182,7 +202,17 @@ h1, h2, h3, .menu-btn, .site-banner, .tagline {
 
 /* Mobile (phones) */
 @media (max-width: 600px) {
+  .site-banner h1 {
+    font-size: 1.5em;
+  }
+  .tagline {
+    font-size: 1em;
+  }
   .home-bottom-gif img {
     max-width: 220px;
+  }
+  .menu-btn {
+    padding: 0.8em 1em;
+    font-size: 1em;
   }
 }
