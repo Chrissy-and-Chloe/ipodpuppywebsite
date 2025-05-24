@@ -335,3 +335,7 @@ blockquote, pre, code {
   font-style: italic;
 }
 
+.blog-header h2, .post-preview p, .post-preview h2 {
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+}
