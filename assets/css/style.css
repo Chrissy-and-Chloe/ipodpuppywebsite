@@ -136,7 +136,7 @@ header, footer {
 }
 
 .post-preview h2 {
-  font-size: 1.1em;
+  font-size: 1.3em;
   background-color: #000088;
   color: #fff;
   padding: 0.3em;
@@ -309,7 +309,7 @@ article code, .post-content code {
 
 .blog-header h2 {
   margin: 0;
-  font-size: 1.8em;                       /* Slightly bigger for header */
+  font-size: 1.4em;                       /* Slightly bigger for header */
 }
 
 
