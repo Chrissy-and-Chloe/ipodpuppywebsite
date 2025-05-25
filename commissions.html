@@ -1,188 +1,151 @@
 ---
 layout: default
 title: Commissions
-description: Custom artwork and character bundles by ipodpuppy14
 ---
 
 <style>
-.menu-title {
+.commission-wrapper {
+  background: linear-gradient(135deg, #c2e9fb 0%, #a1c4fd 100%);
+  color: #000;
+  font-family: 'Trebuchet MS', 'Verdana', 'Arial', sans-serif;
+  padding: 2em;
+  max-width: 1000px;
+  margin: 0 auto;
+  border-radius: 20px;
+  box-shadow: 10px 10px 20px rgba(0,0,0,0.3);
   text-align: center;
+}
+
+.commission-header {
   font-size: 2.2em;
-  color: #ffff99;
-  margin-bottom: 1.5em;
-  text-shadow: 2px 2px #000;
+  color: #4b0082;
+  text-shadow: 2px 2px #fff;
+  background: linear-gradient(to right, #f8ffae, #43c6ac);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  margin-bottom: 1em;
 }
 
-.menu-section {
-  background: rgba(255, 255, 255, 0.03);
-  padding: 1.2em;
-  border: 1px dashed #fff6c5;
-  border-radius: 10px;
+.commission-intro {
+  font-size: 1.1em;
   margin-bottom: 2em;
+  padding: 1em;
+  background: rgba(255,255,255,0.8);
+  border-radius: 12px;
 }
 
-.menu-section h3 {
+.commission-section {
+  background: rgba(255,255,255,0.9);
+  border: 2px solid #4b0082;
+  border-radius: 12px;
+  padding: 1em;
+  margin-bottom: 1.5em;
+  text-align: left;
+}
+
+.commission-section h3 {
   font-size: 1.5em;
-  color: #ffe680;
-  border-bottom: 1px dotted #fff6c5;
-  padding-bottom: 0.4em;
+  margin-bottom: 0.5em;
+  color: #4b0082;
+  border-bottom: 1px dashed #4b0082;
+}
+
+.commission-item {
   margin-bottom: 0.7em;
-  text-shadow: 1px 1px #000;
 }
 
-.menu-item {
-  padding: 0.4em 0;
-  font-size: 1em;
-  border-bottom: 1px dotted #444;
-}
-
-.menu-subtitle {
+.commission-subtitle {
   margin-top: 1em;
   font-weight: bold;
-  font-size: 1.1em;
-  color: #ffffcc;
+}
+
+@media (max-width: 600px) {
+  .commission-wrapper {
+    padding: 1em;
+    font-size: 1em;
+  }
+  .commission-header {
+    font-size: 1.8em;
+  }
 }
 </style>
 
-<section class="commissions">
-  <h2 class="menu-title">🎨 Commission Menu</h2>
+<div class="commission-wrapper">
+  <h1 class="commission-header">🎨 Commission Me!</h1>
+  <div class="commission-intro">
+    Ready to Commission? All pricing, bundle options, and terms & conditions are listed right here on this page. Take a look to decide what works best for you. If you're ready to request a commission, please fill out the form (link TBD). This helps me keep everything organized and ensures I get all the details needed to bring your vision to life.
+  </div>
 
-  <div class="menu-section">
+  <div class="commission-section">
     <h3>📸 Profile Pictures</h3>
-    <div class="menu-item"><strong>Line Art Only</strong> — $30</div>
-    <div class="menu-item"><strong>Flat Colors</strong> — $45</div>
-    <div class="menu-item"><strong>Fully Rendered</strong> — $60</div>
-    <div class="menu-subtitle">Background Options:</div>
-    <div class="menu-item">Simple (gradient/abstract) — Free</div>
-    <div class="menu-item">Detailed — +$20</div>
+    <div class="commission-item">Line Art Only — $30</div>
+    <div class="commission-item">Flat Colors — $45</div>
+    <div class="commission-item">Fully Rendered — $60</div>
+    <div class="commission-subtitle">Background Options:</div>
+    <div class="commission-item">Simple (gradient/abstract) — Free</div>
+    <div class="commission-item">Detailed — +$20</div>
   </div>
 
-  <div class="menu-section">
+  <div class="commission-section">
     <h3>🧍 Character Reference Sheets</h3>
-    <div class="menu-item"><strong>Basic</strong> — $90 (1 full-body + 1 bust)</div>
-    <div class="menu-item"><strong>Detailed</strong> — $180 (front & back + expressions)</div>
-    <div class="menu-subtitle">Add-ons:</div>
-    <div class="menu-item">Extra poses/items — +$30</div>
-    <div class="menu-item">Complex outfits — +$40</div>
+    <div class="commission-item">Basic Reference Sheet — $90 (1 full-body + 1 bust)</div>
+    <div class="commission-item">Detailed Reference Sheet — $180 (front & back + expressions)</div>
+    <div class="commission-subtitle">Add-ons:</div>
+    <div class="commission-item">Extra poses/items — +$30</div>
+    <div class="commission-item">Complex outfits — +$40</div>
   </div>
 
-  <div class="menu-section">
+  <div class="commission-section">
     <h3>🖼️ Profile Banners</h3>
-    <div class="menu-item">Line Art Only — $50</div>
-    <div class="menu-item">Flat Colors — $80</div>
-    <div class="menu-item">Fully Rendered — $140</div>
-    <div class="menu-subtitle">Add-ons:</div>
-    <div class="menu-item">Additional characters — +$20 each</div>
-    <div class="menu-item">Detailed backgrounds — +$40</div>
+    <div class="commission-item">Line Art Only — $50</div>
+    <div class="commission-item">Flat Colors — $80</div>
+    <div class="commission-item">Fully Rendered — $140</div>
+    <div class="commission-subtitle">Add-ons:</div>
+    <div class="commission-item">Additional characters — +$20 each</div>
+    <div class="commission-item">Detailed backgrounds — +$40</div>
   </div>
 
-  <div class="menu-section">
+  <div class="commission-section">
     <h3>🌄 Scenes</h3>
-    <div class="menu-item">Line Art: $40/character + $20 background</div>
-    <div class="menu-item">Flat Colors: $60/character + $30 background</div>
-    <div class="menu-item">Fully Rendered: $100/character + $50 background</div>
-    <div class="menu-item">Props/complex details: +$25–$50</div>
+    <div class="commission-item">Line Art: $40/character + $20 background</div>
+    <div class="commission-item">Flat Colors: $60/character + $30 background</div>
+    <div class="commission-item">Fully Rendered: $100/character + $50 background</div>
+    <div class="commission-item">Props/complex details: +$25–$50</div>
   </div>
 
-  <div class="menu-section">
+  <div class="commission-section">
     <h3>🗯️ Comic Strips (2-panel minimum)</h3>
-    <div class="menu-item">Line Art: $25/panel + $10/character</div>
-    <div class="menu-item">Flat Colors: $35/panel + $15/character</div>
-    <div class="menu-item">Fully Rendered: $50/panel + $20/character</div>
-    <div class="menu-subtitle">Backgrounds:</div>
-    <div class="menu-item">Simple: +$10</div>
-    <div class="menu-item">Detailed: +$40</div>
+    <div class="commission-item">Line Art: $25/panel + $10/character</div>
+    <div class="commission-item">Flat Colors: $35/panel + $15/character</div>
+    <div class="commission-item">Fully Rendered: $50/panel + $20/character</div>
+    <div class="commission-subtitle">Backgrounds:</div>
+    <div class="commission-item">Simple: +$10</div>
+    <div class="commission-item">Detailed: +$40</div>
   </div>
 
-  <div class="menu-section">
+  <div class="commission-section">
     <h3>😄 Discord Emoji Sets</h3>
-    <div class="menu-item">$15 per emoji (flat color, stylized)</div>
-    <div class="menu-subtitle">Bundles:</div>
-    <div class="menu-item">$70 for 5 emojis</div>
-    <div class="menu-item">$130 for 10 emojis</div>
+    <div class="commission-item">$15 per emoji (flat color, stylized)</div>
+    <div class="commission-subtitle">Bundles:</div>
+    <div class="commission-item">$70 for 5 emojis</div>
+    <div class="commission-item">$130 for 10 emojis</div>
   </div>
 
-  <div class="menu-section">
-    <h3>🎁 Character & Community Bundles</h3>
-    <div class="menu-item"><strong>Character Starter Bundle</strong>: $120</div>
-    <div class="menu-item"><strong>DnD Party Bundle</strong>: $200</div>
-    <div class="menu-item"><strong>Discord Community Pack</strong>: $180</div>
-    <div class="menu-item"><strong>Nerd Playgroup Bundle</strong>: $150</div>
-    <div class="menu-item"><strong>Silly Little Comic Pack</strong>: $250</div>
+  <div class="commission-section">
+    <h3>🎁 Bundles & Packages</h3>
+    <div class="commission-item">Character Starter Bundle: $120</div>
+    <div class="commission-item">DnD Party Bundle: $200</div>
+    <div class="commission-item">Discord Community Pack: $180</div>
+    <div class="commission-item">Nerd Playgroup Bundle: $150</div>
+    <div class="commission-item">Silly Little Comic Pack: $250</div>
   </div>
 
-  <div class="menu-section">
+  <div class="commission-section">
     <h3>📉 Discounts</h3>
-    <div class="menu-item">$200+: 10% off</div>
-    <div class="menu-item">$300+: 15% off</div>
-    <div class="menu-item">$500+: 20% off</div>
-    <div class="menu-item">$800+: 25% off</div>
+    <div class="commission-item">$200+: 10% off</div>
+    <div class="commission-item">$300+: 15% off</div>
+    <div class="commission-item">$500+: 20% off</div>
+    <div class="commission-item">$800+: 25% off</div>
   </div>
 
-  <div class="menu-section">
-  <h3>📜 Terms & Policies</h3>
-  <div class="menu-item"><strong>1. COMMERCIAL USE</strong><br>
-    If your commission will be used for commercial purposes (e.g., designs for merchandise, album covers, posters for sale), please indicate this upfront. Commercial usage may incur additional fees to reflect its intended use, or we can discuss a potential royalty arrangement.
-  </div>
-
-  <div class="menu-item"><strong>2. COMMISSION CONTENT</strong><br>
-    If you're unsure whether your request fits my skillset (e.g., complex detail work, mecha, long-form project), please ask me beforehand. I'll let you know if it's something I can accommodate or falls outside my scope.
-  </div>
-
-  <div class="menu-item"><strong>3. PAYMENT TERMS</strong><br>
-    Payments can be processed through Venmo, Cashapp, and Paypal. If these aren't options available to you, let me know so we can explore an alternative that works.
-  </div>
-
-  <div class="menu-item"><strong>4. COMMISSION PROCESS</strong><br>
-    Throughout the commission process, I will provide progress updates. You’re welcome to share feedback, request changes, or voice any concerns during these updates. If everything looks good at any stage, let me know so I can proceed without delay.<br><br>
-    I understand life can get busy, but if you don’t respond to any messages I send within three days at any point during the commission process, I will consider the project abandoned. In this case, any work completed/payment received up until that point will remain with me, and I will discard the rest of the project unless you provide a clear explanation or indicate that you won’t be able to respond for any reason.<br><br>
-    If you haven’t heard back from me within a week of an update, feel free to follow up. While I appreciate patience, I also aim to complete your project efficiently, so don’t hesitate to reach out.
-  </div>
-
-  <div class="menu-item"><strong>5. EXPEDITED/RUSH ORDERS</strong><br>
-    If you need your commission completed quickly or want priority placement in my queue, a rush fee will apply. This is calculated as 20% of the original price. For example, a $100 project would include an additional $20, making the total $120.
-  </div>
-
-  <div class="menu-item"><strong>6. COPYRIGHT AND USAGE RIGHTS</strong><br>
-    As an artist, I retain the copyright to all commissioned work unless otherwise agreed upon. This includes the right to display the artwork in my portfolio, social media, or other platforms unless the client requests confidentiality.<br><br>
-    Clients may not claim my work as their own or alter it without permission. For personal use, you are free to share and display the artwork with proper credit to me as the creator.
-  </div>
-
-  <div class="menu-item"><strong>7. REFUNDS AND CANCELLATIONS</strong><br>
-    Refunds are available only before significant progress has been made on your commission. If I’ve started the work, a partial refund may be issued based on how much work has been completed.<br><br>
-    If I am unable to complete your commission for any reason, a full refund will be issued.
-  </div>
-
-  <div class="menu-item"><strong>8. DEADLINES</strong><br>
-    If your commission has a specific deadline, please communicate this clearly before the project begins. I will confirm if I can accommodate your timeline, and if necessary, a rush fee may apply.
-  </div>
-
-  <div class="menu-item"><strong>9. REVISIONS</strong><br>
-    Minor revisions are included in the price. However, significant changes or multiple revisions beyond the original request may result in additional fees.
-  </div>
-
-  <div class="menu-item"><strong>10. DELIVERY</strong><br>
-    Completed commissions will be delivered digitally via email. If specific file types or dimensions are required, please specify them in advance.
-  </div>
-
-  <div class="menu-item"><strong>11. FILE STORAGE</strong><br>
-    I will keep your commission files for up to 3 months after delivery. After this period, I cannot guarantee the files will still be available. Make sure to save copies of all files once they are delivered!
-  </div>
-
-  <div class="menu-item"><strong>12. AI USAGE AND NFT POLICY</strong><br>
-    My artwork may not be used in any AI training programs or as input for AI-generated content. Additionally, my work may not be minted or sold as NFTs (non-fungible tokens) under any circumstances.
-  </div>
-
-  <div class="menu-item"><strong>13. UPFRONT PAYMENT POLICY</strong><br>
-    Commissions require a 50% upfront deposit before work begins. The remaining balance is due upon completion before final files are delivered.
-  </div>
-
-  <div class="menu-item"><strong>14. QUEUE AND WORKLOAD</strong><br>
-    Commissions are completed in the order they are received unless a rush fee is applied. I will inform you of your approximate position in the queue and estimated completion time when we begin.
-  </div>
-
-  <div class="menu-item"><strong>15. DISPUTES</strong><br>
-    If there are any issues with the completed commission, please notify me promptly. I will do my best to resolve the matter, but disputes handled outside this agreement (e.g., through chargebacks) may result in a ban from future commissions.
-  </div>
 </div>
-</section>
