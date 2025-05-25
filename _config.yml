@@ -2,3 +2,8 @@ title: iPod Puppy Blog
 description: A cozy feed of updates
 baseurl: ""
 url: "https://yourusername.github.io"
+
+collections:
+  comics:
+    output: true
+    permalink: /comics/:name
