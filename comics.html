@@ -4,7 +4,6 @@ title: Comics
 ---
 
 <section class="comic-feed">
-  <h2 class="menu-title">🗯️ Comic Feed</h2>
 
   {% for post in site.categories.comics reversed %}
   <article class="comic-post">
@@ -20,3 +19,56 @@ title: Comics
   </article>
   {% endfor %}
 </section>
+
+<style>
+.comic-feed-wrapper {
+  padding: 2em;
+  max-width: 1000px;
+  margin: auto;
+  text-align: center;
+}
+
+  .comic-feed {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5em;
+}
+
+.comic-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: #fff6c5;
+  padding: 1em;
+  border-radius: 10px;
+  box-shadow: 3px 3px 10px rgba(0,0,0,0.2);
+}
+
+.comic-thumbnail img {
+  width: 150px;
+  height: auto;
+  border-radius: 5px;
+}
+
+.comic-details {
+  flex: 1;
+  margin: 0 1em;
+  text-align: left;
+}
+
+.comic-banner img {
+  max-width: 300px;
+  height: auto;
+  border-radius: 5px;
+}
+
+@media (max-width: 768px) {
+  .comic-item {
+    flex-direction: column;
+    text-align: center;
+  }
+  .comic-banner img {
+    max-width: 100%;
+  }
+}
+</style>
