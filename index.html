@@ -146,9 +146,13 @@ async function loadLiveFeeds() {
   const container = document.getElementById('dynamic-live-feeds');
   data.forEach(feed => {
     const div = document.createElement('div');
-    div.innerHTML = DOMPurify.sanitize(feed.embed_code);  // 🔒 Sanitize for security!
+    div.innerHTML = DOMPurify.sanitize(feed.embed_code, {
+  ALLOWED_TAGS: ['iframe'],
+  ALLOWED_ATTR: ['src', 'width', 'height', 'frameborder', 'allow', 'allowfullscreen']
+});  // 🔒 Sanitize for security!
     container.appendChild(div);
   });
 }
 loadLiveFeeds();
+setInterval(loadLiveFeeds, 60000);  // Refresh every 60 seconds (optional)
 </script>
