@@ -2,6 +2,34 @@
 layout: default
 ---
 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- Usual metadata (optional) -->
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{{ page.title }}</title>
+
+  <!-- Supabase Integration -->
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="/dynamic/supabase.js"></script>
+
+  <style>
+    .comic-post {
+      max-width: 800px;
+      margin: auto;
+      padding: 2em;
+      text-align: center;
+    }
+    .comic-full-image, .comic-thumbnail {
+      max-width: 100%;
+      height: auto;
+      margin-bottom: 1em;
+    }
+  </style>
+</head>
+<body>
+
 <div class="comic-post">
   <h1>{{ page.title }}</h1>
   <p><em>{{ page.date | date: "%B %d, %Y" }}</em></p>
@@ -17,3 +45,6 @@ layout: default
     {{ content }}
   </div>
 </div>
+
+</body>
+</html>
