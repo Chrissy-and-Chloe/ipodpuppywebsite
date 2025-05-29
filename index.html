@@ -152,3 +152,9 @@ document.getElementById("submitDrawing").addEventListener("click", () => {
   alert("Drawing submitted! (placeholder)");
 });
 </script>
+
+<script type="module">
+  import { fetchData } from '/dynamic/js/supabase.js';
+
+  fetchData();  // This is just a test fetch from 'your_table_name'
+</script>
