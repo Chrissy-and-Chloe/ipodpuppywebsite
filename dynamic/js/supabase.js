@@ -1,23 +1,22 @@
-// /assets/js/supabase.js
-const SUPABASE_URL = 'https://YOUR_PROJECT_REF.supabase.co';
-const SUPABASE_ANON_KEY = 'YOUR_ANON_KEY';
+// Initialize Supabase
+import { createClient } from '@supabase/supabase-js';
 
-const supabase = supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+const supabaseUrl = 'https://faqohhfkuvbbiiltngoa.supabase.co';
+const supabaseKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImZhcW9oaGZrdXZiYmlpbHRuZ29hIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDg1NDA1OTEsImV4cCI6MjA2NDExNjU5MX0.s9jgIWZMU_fDUmTlYMDN-Gmjhs546HpgPbZ-ApXhOJg';
 
-// Example functions (optional)
-async function submitDrawing(dataURL) {
-  const { data, error } = await supabase
-    .from('drawings')
-    .insert([{ image_data: dataURL }]);
-  return { data, error };
+const supabaseClient = createClient(supabaseUrl, supabaseKey);
+
+// Example function: Fetch data from a table
+async function fetchData() {
+  const { data, error } = await supabaseClient
+    .from('your_table_name')
+    .select('*');
+
+  if (error) {
+    console.error('Error fetching data:', error);
+  } else {
+    console.log('Fetched data:', data);
+  }
 }
 
-async function submitMessage(message) {
-  const { data, error } = await supabase
-    .from('messages')
-    .insert([{ message }]);
-  return { data, error };
-}
-
-// Export if using modules
-// export { submitDrawing, submitMessage };
+fetchData();
