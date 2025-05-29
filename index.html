@@ -137,12 +137,9 @@ const supabaseClient = createClient(supabaseUrl, supabaseKey);
 const canvas = document.getElementById("drawingCanvas");
 const ctx = canvas.getContext("2d");
 let drawing = false;
-
 canvas.addEventListener("mousedown", () => drawing = true);
 canvas.addEventListener("mouseup", () => drawing = false);
-canvas.addEventListener("mousemove", draw);
-
-function draw(e) {
+canvas.addEventListener("mousemove", e => {
   if (!drawing) return;
   ctx.lineWidth = 2;
   ctx.lineCap = "round";
@@ -151,8 +148,7 @@ function draw(e) {
   ctx.stroke();
   ctx.beginPath();
   ctx.moveTo(e.offsetX, e.offsetY);
-}
-
+});
 document.getElementById("clearCanvas").addEventListener("click", () => {
   ctx.clearRect(0, 0, canvas.width, canvas.height);
   ctx.beginPath();
@@ -161,35 +157,33 @@ document.getElementById("clearCanvas").addEventListener("click", () => {
 // 📝 Message Submission
 document.getElementById("submitMessage").addEventListener("click", async () => {
   const message = document.getElementById("messageInput").value.trim();
-  if (!message) {
-    alert("Please enter a message.");
-    return;
-  }
-  const { data, error } = await supabaseClient
-    .from('Messages')
-    .insert([{ message, created_at: new Date().toISOString() }]);
-  if (error) {
-    console.error('Error submitting message:', error);
-    alert('Message submission failed.');
-  } else {
-    alert('Message submitted!');
-    console.log('Submitted message:', data);
-    document.getElementById("messageInput").value = "";
-  }
+  if (!message) return alert("Please enter a message.");
+  const { data, error } = await supabaseClient.from('Messages').insert([{ message, created_at: new Date().toISOString() }]);
+  if (error) { console.error('Message error:', error); alert('Failed to submit message.'); }
+  else { alert('Message submitted!'); document.getElementById("messageInput").value = ""; }
 });
 
 // 🎨 Drawing Submission
 document.getElementById("submitDrawing").addEventListener("click", async () => {
   const dataURL = canvas.toDataURL("image/png");
-  const { data, error } = await supabaseClient
-    .from('Drawings')
-    .insert([{ image_url: dataURL, created_at: new Date().toISOString() }]);
-  if (error) {
-    console.error('Error submitting drawing:', error);
-    alert('Drawing submission failed.');
-  } else {
-    alert('Drawing submitted!');
-    console.log('Submitted drawing:', data);
-  }
+  const { data, error } = await supabaseClient.from('Drawings').insert([{ image_url: dataURL, created_at: new Date().toISOString() }]);
+  if (error) { console.error('Drawing error:', error); alert('Failed to submit drawing.'); }
+  else { alert('Drawing submitted!'); }
 });
+
+// 🌐 Dynamic Live Feeds
+async function loadLiveFeeds() {
+  const { data, error } = await supabaseClient.from('LiveFeeds').select('*');
+  if (error) {
+    console.error('Live Feeds error:', error);
+    return;
+  }
+  const container = document.getElementById('dynamic-live-feeds');
+  data.forEach(feed => {
+    const div = document.createElement('div');
+    div.innerHTML = feed.embed_code; // Supabase returns embed codes stored in your database
+    container.appendChild(div);
+  });
+}
+loadLiveFeeds();
 </script>
