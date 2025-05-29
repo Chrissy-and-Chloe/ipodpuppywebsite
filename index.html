@@ -7,36 +7,47 @@ description: las vegas based cartoonist + local philanthropist + your new friend
 <section class="homepage-wrapper">
   
   <!-- 🌐 Live Social Feeds -->
-  <div class="social-feeds">
-    <h2>🌐 iPodPuppy Live Feeds</h2>
+  <script src="https://cdn.jsdelivr.net/npm/dompurify@3.0.3/dist/purify.min.js"></script>
 
-    <h3>Reddit</h3>
-    <blockquote class="reddit-card" data-card-created="true">
-      <a href="https://www.reddit.com/r/YourSubreddit/comments/postid">Check out my latest Reddit post!</a>
-    </blockquote>
-    <script async src="https://embed.redditmedia.com/widgets/platform.js" charset="UTF-8"></script>
+<script type="module">
+import { createClient } from 'https://cdn.jsdelivr.net/npm/@supabase/supabase-js/+esm';
 
-    <h3>Tumblr</h3>
-    <iframe frameborder="0" scrolling="no" width="400" height="600"
-            src="https://embed.tumblr.com/embed/blog/ipodpuppy14.tumblr.com"></iframe>
+const supabaseUrl = 'https://faqohhfkuvbbiiltngoa.supabase.co';
+const supabaseKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImZhcW9oaGZrdXZiYmlpbHRuZ29hIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDg1NDA1OTEsImV4cCI6MjA2NDExNjU5MX0.s9jgIWZMU_fDUmTlYMDN-Gmjhs546HpgPbZ-ApXhOJg';
 
-     <h3>Instagram</h3>
-<div style="text-align: center;">
-  <script src="https://cdn.lightwidget.com/widgets/lightwidget.js"></script>
-  <iframe 
-    src="//lightwidget.com/widgets/7b8715172c6c528d8b907aebd0c18b12.html" 
-    scrolling="no" 
-    allowtransparency="true" 
-    class="lightwidget-widget" 
-    style="width: 100%; max-width: 600px; border: 0; overflow: hidden;">
-  </iframe>
-</div>
+const supabaseClient = createClient(supabaseUrl, supabaseKey);
 
-    <h3>Bluesky</h3>
-    <a href="https://bsky.app/profile/ipodpuppy.bsky.social" target="_blank">
-      Visit iPodPuppy on Bluesky!
-    </a>
-  </div>
+// Fetch and display live feeds
+async function displayLiveFeeds() {
+  const { data, error } = await supabaseClient
+    .from('Live_feeds')
+    .select('embed_code')  // Only fetch necessary fields
+    .order('created_at', { ascending: false });
+
+  if (error) {
+    console.error('Error fetching live feeds:', error);
+    return;
+  }
+
+  const container = document.createElement('div');
+  container.id = "liveFeedsContainer";
+
+  data.forEach(feed => {
+    const div = document.createElement('div');
+    // ✅ Sanitize embed_code before injecting into the DOM
+    div.innerHTML = DOMPurify.sanitize(feed.embed_code);
+    container.appendChild(div);
+  });
+
+  // Append to a placeholder container in your HTML
+  const target = document.querySelector('.social-feeds');
+  if (target) {
+    target.appendChild(container);
+  }
+}
+
+displayLiveFeeds();
+</script>
 
   <!-- 🎨 Drawing Submission -->
   <section class="drawing-section">
