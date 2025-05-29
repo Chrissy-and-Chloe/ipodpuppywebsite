@@ -1,6 +1,6 @@
 ---
 layout: default
-title: Comics
+title: iPodPuppy Comics
 ---
 
 <section class="comic-feed-wrapper">
@@ -8,7 +8,6 @@ title: Comics
     <img src="{{ '/assets/images/comicheader.jpg' | relative_url }}" alt="iPodPuppy Comics Banner">
   </div>
 
-  <h1>iPodPuppy Comics</h1>
   <div class="comic-feed">
     {% assign comics = site.comics | sort: "date" | reverse %}
     {% assign comics_per_page = 5 %}
