@@ -32,20 +32,27 @@ title: Comics
 
   {% if paginator %}
   <div class="pagination">
-    {% if paginator.previous_page %}
+    {% if paginator.page > 1 %}
+      <a href="{{ paginator.first_page_path | relative_url }}">« First</a>
       <a href="{{ paginator.previous_page_path | relative_url }}">← Previous</a>
     {% endif %}
 
-    {% for page in (1..paginator.total_pages) %}
-      {% if page == paginator.page %}
+    {% assign total_pages = paginator.total_pages %}
+    {% assign current_page = paginator.page %}
+    {% assign range_start = current_page | minus: 2 | at_least: 1 %}
+    {% assign range_end = current_page | plus: 2 | at_most: total_pages %}
+
+    {% for page in (range_start..range_end) %}
+      {% if page == current_page %}
         <span class="current">{{ page }}</span>
       {% else %}
         <a href="{{ paginator.paginate_path | replace: ':num', page | relative_url }}">{{ page }}</a>
       {% endif %}
     {% endfor %}
 
-    {% if paginator.next_page %}
+    {% if paginator.page < total_pages %}
       <a href="{{ paginator.next_page_path | relative_url }}">Next →</a>
+      <a href="{{ paginator.paginate_path | replace: ':num', total_pages | relative_url }}">Last »</a>
     {% endif %}
   </div>
   {% endif %}
