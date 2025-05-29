@@ -12,7 +12,7 @@ title: Comics
   <div class="comic-feed">
     {% assign comics = site.comics | sort: "date" | reverse %}
     {% assign comics_per_page = 5 %}
-    {% assign start_index = START_INDEX %} <!-- Replace START_INDEX with your desired value (0 for page1, 5 for page2, etc.) -->
+    {% assign start_index = 0 %} <!-- The dashboard should replace 0 with the correct start index (e.g., 0, 5, 10) -->
     {% assign limited_comics = comics | slice: start_index, comics_per_page %}
     {% for comic in limited_comics %}
     <article class="comic-item">
@@ -33,17 +33,15 @@ title: Comics
     {% endfor %}
   </div>
 
+  <!-- Optional: If you want static navigation links, add them manually below -->
+  <!--
   <div class="pagination">
-    {% assign total_comics = site.data.comic_count.total_comics %} <!-- Read total comics from the YAML data file -->
-    {% assign total_pages = total_comics | divided_by: comics_per_page %}
-    {% if total_comics modulo comics_per_page != 0 %}
-      {% assign total_pages = total_pages | plus: 1 %}
-    {% endif %}
-
-    {% for page in (1..total_pages) %}
-      <a href="/comics/page{{ page }}.html">{{ page }}</a>
-    {% endfor %}
+    <a href="/comics/page1.html">1</a>
+    <a href="/comics/page2.html">2</a>
+    <a href="/comics/page3.html">3</a>
+    ...
   </div>
+  -->
 </section>
 
 <style>
@@ -109,30 +107,6 @@ title: Comics
 
 .read-more:hover {
   background: #e87b00;
-}
-
-.pagination {
-  margin-top: 2em;
-}
-
-.pagination a, .pagination span {
-  display: inline-block;
-  padding: 0.5em 1em;
-  margin: 0 0.2em;
-  background: #eee;
-  color: #333;
-  text-decoration: none;
-  border-radius: 5px;
-}
-
-.pagination .current {
-  background: #ff9933;
-  color: white;
-}
-
-.pagination a:hover {
-  background: #e87b00;
-  color: white;
 }
 
 @media (max-width: 768px) {
