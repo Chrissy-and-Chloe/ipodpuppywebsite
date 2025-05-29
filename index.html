@@ -5,64 +5,27 @@ description: las vegas based cartoonist + local philanthropist + your new friend
 ---
 
 <section class="homepage-wrapper">
-  
-  <!-- 🌐 Live Social Feeds -->
-  <script src="https://cdn.jsdelivr.net/npm/dompurify@3.0.3/dist/purify.min.js"></script>
 
-<script type="module">
-import { createClient } from 'https://cdn.jsdelivr.net/npm/@supabase/supabase-js/+esm';
+  <!-- 🌐 Social Feeds -->
+  <div class="social-feeds" id="dynamic-live-feeds">
+    <h2>🌐 iPodPuppy Live Feeds</h2>
+  </div>
 
-const supabaseUrl = 'https://faqohhfkuvbbiiltngoa.supabase.co';
-const supabaseKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImZhcW9oaGZrdXZiYmlpbHRuZ29hIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDg1NDA1OTEsImV4cCI6MjA2NDExNjU5MX0.s9jgIWZMU_fDUmTlYMDN-Gmjhs546HpgPbZ-ApXhOJg';
-
-const supabaseClient = createClient(supabaseUrl, supabaseKey);
-
-// Fetch and display live feeds
-async function displayLiveFeeds() {
-  const { data, error } = await supabaseClient
-    .from('Live_feeds')
-    .select('embed_code')  // Only fetch necessary fields
-    .order('created_at', { ascending: false });
-
-  if (error) {
-    console.error('Error fetching live feeds:', error);
-    return;
-  }
-
-  const container = document.createElement('div');
-  container.id = "liveFeedsContainer";
-
-  data.forEach(feed => {
-    const div = document.createElement('div');
-    // ✅ Sanitize embed_code before injecting into the DOM
-    div.innerHTML = DOMPurify.sanitize(feed.embed_code);
-    container.appendChild(div);
-  });
-
-  // Append to a placeholder container in your HTML
-  const target = document.querySelector('.social-feeds');
-  if (target) {
-    target.appendChild(container);
-  }
-}
-
-displayLiveFeeds();
-</script>
-
-  <!-- 🎨 Drawing Submission -->
+  <!-- Drawing Submission -->
   <section class="drawing-section">
     <h2>Submit a Drawing!</h2>
     <canvas id="drawingCanvas" width="400" height="400" style="border:1px solid #000;"></canvas><br>
     <button id="clearCanvas">Clear</button>
     <button id="submitDrawing">Submit Drawing</button>
   </section>
-  
-  <!-- 📝 Message Submission -->
+
+  <!-- Message Submission -->
   <section class="message-section">
     <h2>Leave a Message!</h2>
     <textarea id="messageInput" rows="4" cols="50" placeholder="Write your message here..."></textarea><br>
     <button id="submitMessage">Submit Message</button>
   </section>
+
 </section>
 
 <div class="crt-note">✨ This website is best viewed on a CRT monitor ✨</div>
@@ -124,16 +87,15 @@ button:hover { background-color: #e87b00; }
 }
 </style>
 
+<script src="https://cdn.jsdelivr.net/npm/dompurify@3.0.3/dist/purify.min.js"></script>
 <script type="module">
-// 🎨 Initialize Supabase
 import { createClient } from 'https://cdn.jsdelivr.net/npm/@supabase/supabase-js/+esm';
 
 const supabaseUrl = 'https://faqohhfkuvbbiiltngoa.supabase.co';
 const supabaseKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImZhcW9oaGZrdXZiYmlpbHRuZ29hIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDg1NDA1OTEsImV4cCI6MjA2NDExNjU5MX0.s9jgIWZMU_fDUmTlYMDN-Gmjhs546HpgPbZ-ApXhOJg';
-
 const supabaseClient = createClient(supabaseUrl, supabaseKey);
 
-// 🎨 Canvas Drawing Logic
+// 🎨 Canvas Drawing
 const canvas = document.getElementById("drawingCanvas");
 const ctx = canvas.getContext("2d");
 let drawing = false;
@@ -158,30 +120,27 @@ document.getElementById("clearCanvas").addEventListener("click", () => {
 document.getElementById("submitMessage").addEventListener("click", async () => {
   const message = document.getElementById("messageInput").value.trim();
   if (!message) return alert("Please enter a message.");
-  const { data, error } = await supabaseClient.from('Messages').insert([{ message, created_at: new Date().toISOString() }]);
-  if (error) { console.error('Message error:', error); alert('Failed to submit message.'); }
-  else { alert('Message submitted!'); document.getElementById("messageInput").value = ""; }
+  const { error } = await supabaseClient.from('Messages').insert([{ message, created_at: new Date().toISOString() }]);
+  error ? alert('Message failed.') : alert('Message sent!');
+  document.getElementById("messageInput").value = "";
 });
 
 // 🎨 Drawing Submission
 document.getElementById("submitDrawing").addEventListener("click", async () => {
   const dataURL = canvas.toDataURL("image/png");
-  const { data, error } = await supabaseClient.from('Drawings').insert([{ image_url: dataURL, created_at: new Date().toISOString() }]);
-  if (error) { console.error('Drawing error:', error); alert('Failed to submit drawing.'); }
-  else { alert('Drawing submitted!'); }
+  const { error } = await supabaseClient.from('Drawings').insert([{ image_url: dataURL, created_at: new Date().toISOString() }]);
+  error ? alert('Drawing failed.') : alert('Drawing sent!');
 });
 
-// 🌐 Dynamic Live Feeds
+// 🌐 Live Feed Display with Sanitization
 async function loadLiveFeeds() {
-  const { data, error } = await supabaseClient.from('LiveFeeds').select('*');
-  if (error) {
-    console.error('Live Feeds error:', error);
-    return;
-  }
+  const { data, error } = await supabaseClient.from('LiveFeeds').select('embed_code').order('created_at', { ascending: false });
+  if (error) return console.error('Live Feeds error:', error);
+
   const container = document.getElementById('dynamic-live-feeds');
   data.forEach(feed => {
     const div = document.createElement('div');
-    div.innerHTML = feed.embed_code; // Supabase returns embed codes stored in your database
+    div.innerHTML = DOMPurify.sanitize(feed.embed_code);
     container.appendChild(div);
   });
 }
