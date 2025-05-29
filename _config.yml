@@ -6,4 +6,13 @@ url: "https://yourusername.github.io"  # Replace with your actual GitHub Pages U
 collections:
   comics:
     output: true
-    permalink: /comics/:title/  # Use :title, not :name
+    permalink: /comics/:title/
+
+plugins:
+  - jekyll-paginate-v2
+
+pagination:
+  enabled: true
+  collection: comics
+  per_page: 5  # Number of comics per page
+  permalink: /comics/page:num/
