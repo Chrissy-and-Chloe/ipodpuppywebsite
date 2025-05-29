@@ -1,0 +1,45 @@
+---
+layout: default
+title: Guestbook
+---
+
+<section class="guestbook-wrapper">
+  <h1>Guestbook</h1>
+  <div class="guestbook-entries">
+    {% assign entries = site.guestbook | sort: "date" | reverse %}
+    {% for entry in entries %}
+    <article class="guest-entry">
+      <h2>{{ entry.title }}</h2>
+      <p class="guest-date">{{ entry.date | date: "%B %d, %Y" }}</p>
+      <div class="guest-content">
+        {{ entry.content }}
+      </div>
+    </article>
+    {% endfor %}
+  </div>
+</section>
+
+<style>
+.guestbook-wrapper {
+  padding: 2em;
+  max-width: 800px;
+  margin: auto;
+  text-align: center;
+}
+.guest-entry {
+  background: #f0f0f0;
+  padding: 1em;
+  margin-bottom: 1em;
+  border-radius: 10px;
+  box-shadow: 3px 3px 10px rgba(0,0,0,0.2);
+}
+.guest-date {
+  font-size: 0.9em;
+  color: #666;
+}
+.guest-content img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 10px;
+}
+</style>
