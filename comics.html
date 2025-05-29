@@ -34,7 +34,7 @@ title: Comics
   </div>
 
   <div class="pagination">
-    {% assign total_comics = site.comics | size %}
+    {% assign total_comics = site.data.comic_count.total_comics %} <!-- Read total comics from the YAML data file -->
     {% assign total_pages = total_comics | divided_by: comics_per_page %}
     {% if total_comics modulo comics_per_page != 0 %}
       {% assign total_pages = total_pages | plus: 1 %}
