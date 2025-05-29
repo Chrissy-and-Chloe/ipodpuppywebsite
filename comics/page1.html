@@ -1,0 +1,148 @@
+---
+layout: default
+title: Comics
+---
+
+<section class="comic-feed-wrapper">
+  <div class="banner-container">
+    <img src="{{ '/assets/images/comicheader.jpg' | relative_url }}" alt="iPodPuppy Comics Banner">
+  </div>
+
+  <h1>iPodPuppy Comics</h1>
+  <div class="comic-feed">
+    {% assign comics = site.comics | sort: "date" | reverse %}
+    {% assign comics_per_page = 5 %}
+    {% assign start_index = 0 %} <!-- For page 1; replace with 5 for page 2, etc. -->
+    {% assign limited_comics = comics | slice: start_index, comics_per_page %}
+    {% for comic in limited_comics %}
+    <article class="comic-item">
+      {% if comic.thumbnail %}
+      <div class="comic-banner">
+        <a href="{{ comic.url | relative_url }}">
+          <img src="{{ comic.thumbnail }}" alt="{{ comic.title }} thumbnail">
+        </a>
+      </div>
+      {% endif %}
+      <div class="comic-details">
+        <h3><a href="{{ comic.url | relative_url }}">{{ comic.title }}</a></h3>
+        <p class="comic-date">{{ comic.date | date: "%B %d, %Y" }}</p>
+        <p>{{ comic.content | strip_html | truncatewords: 30 }}</p>
+        <a href="{{ comic.url | relative_url }}" class="read-more">Read the full comic →</a>
+      </div>
+    </article>
+    {% endfor %}
+  </div>
+
+  <!-- 🔥 Hardcoded Pagination Bar -->
+  <div class="pagination">
+    <a href="/comics/page1.html">1</a>
+    <a href="/comics/page2.html">2</a>
+    <a href="/comics/page3.html">3</a>
+    <!-- Add more pages as needed -->
+  </div>
+
+</section>
+
+<style>
+.comic-feed-wrapper {
+  padding: 2em;
+  max-width: 1000px;
+  margin: auto;
+  text-align: center;
+}
+
+.banner-container {
+  margin-bottom: 2em;
+}
+
+.banner-container img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+  margin: 0 auto;
+}
+
+.comic-feed {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5em;
+}
+
+.comic-item {
+  display: flex;
+  align-items: center;
+  background: #fff6c5;
+  padding: 1em;
+  border-radius: 10px;
+  box-shadow: 3px 3px 10px rgba(0,0,0,0.2);
+}
+
+.comic-banner img {
+  width: 150px;
+  height: auto;
+  border-radius: 5px;
+}
+
+.comic-details {
+  flex: 1;
+  margin-left: 1em;
+  text-align: left;
+}
+
+.comic-date {
+  font-size: 0.9em;
+  color: #666;
+}
+
+.read-more {
+  display: inline-block;
+  margin-top: 0.5em;
+  padding: 0.3em 0.7em;
+  background: #ff9933;
+  color: white;
+  text-decoration: none;
+  border-radius: 5px;
+}
+
+.read-more:hover {
+  background: #e87b00;
+}
+
+.pagination {
+  margin-top: 2em;
+}
+
+.pagination a, .pagination span {
+  display: inline-block;
+  padding: 0.5em 1em;
+  margin: 0 0.2em;
+  background: #eee;
+  color: #333;
+  text-decoration: none;
+  border-radius: 5px;
+}
+
+.pagination .current {
+  background: #ff9933;
+  color: white;
+}
+
+.pagination a:hover {
+  background: #e87b00;
+  color: white;
+}
+
+@media (max-width: 768px) {
+  .comic-item {
+    flex-direction: column;
+    text-align: center;
+  }
+  .comic-banner img {
+    max-width: 100%;
+  }
+  .comic-details {
+    margin-left: 0;
+    margin-top: 1em;
+  }
+}
+</style>
