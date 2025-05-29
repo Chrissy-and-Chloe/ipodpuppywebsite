@@ -1,3 +1,0 @@
-[build]
-  command = "cd dynamic && bundle exec jekyll build"
-  publish = "dynamic/_site"
