@@ -7,12 +7,13 @@ collections:
   comics:
     output: true
     permalink: /comics/:title/
+  guestbook:
+    output: true
+    permalink: /guestbook/:title/
 
-plugins:
-  - jekyll-paginate-v2
-
-pagination:
-  enabled: true
-  collection: comics
-  per_page: 5  # Number of comics per page
-  permalink: /comics/page:num/
+# Removed jekyll-paginate-v2 because it's not supported on GitHub Pages
+# pagination:
+#   enabled: true
+#   collection: comics
+#   per_page: 5
+#   permalink: /comics/page:num/
