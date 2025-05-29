@@ -4,6 +4,35 @@ title: 🐾 ipodpuppy14's page 🐾
 description: las vegas based cartoonist + local philanthropist + your new friend
 ---
 
+
+
+<section class="homepage-wrapper">
+  <!-- 🎨 Drawing Submission -->
+  <section class="drawing-section">
+    <h2>Submit a Drawing!</h2>
+    <canvas id="drawingCanvas" width="400" height="400" style="border:1px solid #000;"></canvas>
+    <br>
+    <button id="clearCanvas">Clear</button>
+    <button id="submitDrawing">Submit Drawing</button>
+  </section>
+
+  <!-- 📝 Message Submission -->
+  <section class="message-section">
+    <h2>Leave a Message!</h2>
+    <textarea id="messageInput" rows="4" cols="50" placeholder="Write your message here..."></textarea>
+    <br>
+    <button id="submitMessage">Submit Message</button>
+  </section>
+
+  <!-- 📢 Live Social Embeds -->
+  <section class="live-section">
+    <h2>iPodPuppy Live!</h2>
+    <!-- Example: Twitch Embed -->
+    <iframe src="https://player.twitch.tv/?channel=ipodpuppy" frameborder="0" allowfullscreen="true" scrolling="no" height="378" width="620"></iframe>
+    <!-- Additional embeds (e.g., YouTube, Twitter) can be added here -->
+  </section>
+</section>
+
 <div class="crt-note">
   ✨ This website is best viewed on a CRT monitor ✨
 </div>
@@ -13,3 +42,97 @@ description: las vegas based cartoonist + local philanthropist + your new friend
     <img src="/assets/images/enlargeyourguineapig.gif" alt="Enlarge Your Guinea Pig">
   </div>
 </footer>
+
+<style>
+.crt-note {
+  font-size: 1.2em;
+  color: #00ff00;
+  background-color: black;
+  padding: 0.5em;
+  text-align: center;
+  margin-bottom: 1em;
+}
+
+.homepage-wrapper {
+  max-width: 1000px;
+  margin: auto;
+  padding: 2em;
+  text-align: center;
+}
+
+.drawing-section, .message-section, .live-section {
+  margin-bottom: 2em;
+}
+
+canvas {
+  background-color: #fff;
+}
+
+textarea {
+  width: 80%;
+  margin-top: 0.5em;
+}
+
+button {
+  margin: 0.5em;
+  padding: 0.5em 1em;
+  background-color: #ff9933;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #e87b00;
+}
+
+.home-bottom-gif {
+  text-align: center;
+  margin-top: 2em;
+}
+
+.home-bottom-gif img {
+  max-width: 300px;
+  height: auto;
+}
+</style>
+
+<script>
+// 🎨 Canvas Drawing Logic
+const canvas = document.getElementById("drawingCanvas");
+const ctx = canvas.getContext("2d");
+let drawing = false;
+
+canvas.addEventListener("mousedown", () => drawing = true);
+canvas.addEventListener("mouseup", () => drawing = false);
+canvas.addEventListener("mousemove", draw);
+
+function draw(e) {
+  if (!drawing) return;
+  ctx.lineWidth = 2;
+  ctx.lineCap = "round";
+  ctx.strokeStyle = "black";
+  ctx.lineTo(e.offsetX, e.offsetY);
+  ctx.stroke();
+  ctx.beginPath();
+  ctx.moveTo(e.offsetX, e.offsetY);
+}
+
+document.getElementById("clearCanvas").addEventListener("click", () => {
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
+  ctx.beginPath();
+});
+
+// 📝 Message Submission Placeholder
+document.getElementById("submitMessage").addEventListener("click", () => {
+  const message = document.getElementById("messageInput").value;
+  alert(`Message submitted: ${message}`);
+});
+
+// 🎨 Drawing Submission Placeholder
+document.getElementById("submitDrawing").addEventListener("click", () => {
+  const dataURL = canvas.toDataURL();
+  alert("Drawing submitted! (placeholder)");
+});
+</script>
