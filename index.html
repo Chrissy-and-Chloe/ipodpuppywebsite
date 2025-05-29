@@ -7,8 +7,9 @@ description: las vegas based cartoonist + local philanthropist + your new friend
 <section class="homepage-wrapper">
 
   <!-- 🌐 Social Feeds -->
-  <div class="social-feeds" id="dynamic-live-feeds">
+  <div class="social-feeds">
     <h2>🌐 iPodPuppy Live Feeds</h2>
+    <div id="dynamic-live-feeds"></div>
   </div>
 
   <!-- Drawing Submission -->
@@ -87,15 +88,18 @@ button:hover { background-color: #e87b00; }
 }
 </style>
 
+<!-- DOMPurify for security -->
 <script src="https://cdn.jsdelivr.net/npm/dompurify@3.0.3/dist/purify.min.js"></script>
+
 <script type="module">
 import { createClient } from 'https://cdn.jsdelivr.net/npm/@supabase/supabase-js/+esm';
 
-const supabaseUrl = 'https://faqohhfkuvbbiiltngoa.supabase.co';
-const supabaseKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImZhcW9oaGZrdXZiYmlpbHRuZ29hIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDg1NDA1OTEsImV4cCI6MjA2NDExNjU5MX0.s9jgIWZMU_fDUmTlYMDN-Gmjhs546HpgPbZ-ApXhOJg';
-const supabaseClient = createClient(supabaseUrl, supabaseKey);
+const supabase = createClient(
+  'https://faqohhfkuvbbiiltngoa.supabase.co',
+  'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImZhcW9oaGZrdXZiYmlpbHRuZ29hIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDg1NDA1OTEsImV4cCI6MjA2NDExNjU5MX0.s9jgIWZMU_fDUmTlYMDN-Gmjhs546HpgPbZ-ApXhOJg'
+);
 
-// 🎨 Canvas Drawing
+// 🎨 Canvas Drawing Logic
 const canvas = document.getElementById("drawingCanvas");
 const ctx = canvas.getContext("2d");
 let drawing = false;
@@ -120,27 +124,29 @@ document.getElementById("clearCanvas").addEventListener("click", () => {
 document.getElementById("submitMessage").addEventListener("click", async () => {
   const message = document.getElementById("messageInput").value.trim();
   if (!message) return alert("Please enter a message.");
-  const { error } = await supabaseClient.from('Messages').insert([{ message, created_at: new Date().toISOString() }]);
-  error ? alert('Message failed.') : alert('Message sent!');
+  const { error } = await supabase.from('Messages').insert([{ message, created_at: new Date().toISOString() }]);
+  error ? alert('Message failed.') : alert('Message submitted!');
   document.getElementById("messageInput").value = "";
 });
 
 // 🎨 Drawing Submission
 document.getElementById("submitDrawing").addEventListener("click", async () => {
   const dataURL = canvas.toDataURL("image/png");
-  const { error } = await supabaseClient.from('Drawings').insert([{ image_url: dataURL, created_at: new Date().toISOString() }]);
-  error ? alert('Drawing failed.') : alert('Drawing sent!');
+  const { error } = await supabase.from('Drawings').insert([{ image_url: dataURL, created_at: new Date().toISOString() }]);
+  error ? alert('Drawing failed.') : alert('Drawing submitted!');
 });
 
-// 🌐 Live Feed Display with Sanitization
+// 🌐 Live Feed Display (Safe with DOMPurify)
 async function loadLiveFeeds() {
-  const { data, error } = await supabaseClient.from('LiveFeeds').select('embed_code').order('created_at', { ascending: false });
-  if (error) return console.error('Live Feeds error:', error);
-
+  const { data, error } = await supabase.from('LiveFeeds').select('embed_code').order('created_at', { ascending: false });
+  if (error) {
+    console.error('Live Feeds error:', error);
+    return;
+  }
   const container = document.getElementById('dynamic-live-feeds');
   data.forEach(feed => {
     const div = document.createElement('div');
-    div.innerHTML = DOMPurify.sanitize(feed.embed_code);
+    div.innerHTML = DOMPurify.sanitize(feed.embed_code);  // 🔒 Sanitize for security!
     container.appendChild(div);
   });
 }
