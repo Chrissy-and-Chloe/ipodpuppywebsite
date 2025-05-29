@@ -12,7 +12,7 @@ title: Comics
   <div class="comic-feed">
     {% assign comics = site.comics | sort: "date" | reverse %}
     {% assign comics_per_page = 5 %}
-    {% assign start_index = 5 %} <!-- For page 1; replace with 5 for page 2, etc. -->
+    {% assign start_index = 5 %} <!-- For page 2 -->
     {% assign limited_comics = comics | slice: start_index, comics_per_page %}
     {% for comic in limited_comics %}
     <article class="comic-item">
@@ -33,10 +33,10 @@ title: Comics
     {% endfor %}
   </div>
 
-  <!-- 🔥 Hardcoded Pagination Bar -->
+  <!-- 🔥 Hardcoded Pagination Bar (fixed) -->
   <div class="pagination">
-    <a href="/comics/page1.html">1</a>
-    <a href="/comics/page2.html">2</a>
+    <a href="/comics/">1</a> <!-- Changed from /comics/page1.html to /comics/ -->
+    <span class="current">2</span>
     <a href="/comics/page3.html">3</a>
     <!-- Add more pages as needed -->
   </div>
