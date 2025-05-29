@@ -9,7 +9,9 @@ description: las vegas based cartoonist + local philanthropist + your new friend
   <!-- 🌐 Social Feeds -->
   <div class="social-feeds">
     <h2>iPodPuppy Feed!</h2>
-    <div id="dynamic-live-feeds"></div>
+    <div class="scrolling-feed" id="liveFeedsContainer">
+  <!-- Dynamically populated images will go here -->
+  </div>
   </div>
 
   <!-- Drawing Submission -->
@@ -86,6 +88,27 @@ button:hover { background-color: #e87b00; }
   max-width: 300px;
   height: auto;
 }
+
+.scrolling-feed {
+  display: flex;
+  overflow-x: auto;
+  padding: 1em;
+  gap: 1em;
+  border: 2px solid #ff9933;
+  background-color: #fff8f0;
+  scroll-behavior: smooth;
+}
+
+.scrolling-feed img {
+  max-height: 200px;
+  border-radius: 10px;
+  flex-shrink: 0;
+  transition: transform 0.3s;
+}
+
+.scrolling-feed img:hover {
+  transform: scale(1.05);
+}
 </style>
 
 <!-- DOMPurify for security -->
@@ -141,37 +164,38 @@ async function loadLatestLiveFeedImage() {
     .from('LiveFeeds')
     .select('image_url, created_at')
     .order('created_at', { ascending: false })
-    .limit(1);  // Fetch only the most recent record
+    .limit(1);  // Fetch the most recent image
+
+  const container = document.getElementById('dynamic-live-feeds');
+  container.innerHTML = '';  // Clear previous content
 
   if (error) {
     console.error('Error loading latest live feed image:', error);
+    container.textContent = 'Failed to load image.';
     return;
   }
 
-  const container = document.getElementById('dynamic-live-feeds');
-  container.innerHTML = '';  // Clear any previous content
-
-  if (data.length > 0) {
-    const feed = data[0];
+  if (data && data.length > 0) {
+    const { image_url, created_at } = data[0];
 
     const wrapper = document.createElement('div');
     wrapper.style.textAlign = 'center';
-    wrapper.style.marginBottom = '20px';
+    wrapper.style.margin = '20px auto';
+    wrapper.style.maxWidth = '90%';
 
     const img = document.createElement('img');
-    img.src = feed.image_url;
+    img.src = image_url;
+    img.alt = 'Latest live feed image';
     img.style.maxWidth = '100%';
-    img.style.display = 'block';
+    img.style.height = 'auto';
+    img.style.borderRadius = '10px';
     wrapper.appendChild(img);
 
-    // Format the created_at date
-    const date = new Date(feed.created_at);
-    const formattedDate = date.toLocaleDateString() + ' ' + date.toLocaleTimeString();
-
+    const date = new Date(created_at);
     const caption = document.createElement('p');
-    caption.textContent = `Uploaded on: ${formattedDate}`;
+    caption.textContent = `Uploaded on: ${date.toLocaleDateString()} ${date.toLocaleTimeString()}`;
     caption.style.fontSize = '0.9em';
-    caption.style.color = '#888';
+    caption.style.color = '#666';
     wrapper.appendChild(caption);
 
     container.appendChild(wrapper);
