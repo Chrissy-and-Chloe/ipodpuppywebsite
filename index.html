@@ -159,43 +159,40 @@ document.getElementById("submitDrawing").addEventListener("click", async () => {
   error ? alert('Drawing failed.') : alert('Drawing submitted!');
 });
 
-async function loadLatestLiveFeedImage() {
+async function loadRandomLiveFeedImage() {
   const { data, error } = await supabase
     .from('LiveFeeds')
-    .select('image_url, created_at')
-    .order('created_at', { ascending: false })
-    .limit(1);  // Fetch the most recent image
+    .select('image_url, created_at');
 
   const container = document.getElementById('dynamic-live-feeds');
   container.innerHTML = '';  // Clear previous content
 
   if (error) {
-    console.error('Error loading latest live feed image:', error);
-    container.textContent = 'Failed to load image.';
+    console.error('Error loading live feed images:', error);
+    container.textContent = 'Failed to load images.';
     return;
   }
 
   if (data && data.length > 0) {
-    const { image_url, created_at } = data[0];
+    // Pick a random image from the data
+    const randomIndex = Math.floor(Math.random() * data.length);
+    const feed = data[randomIndex];
 
     const wrapper = document.createElement('div');
     wrapper.style.textAlign = 'center';
-    wrapper.style.margin = '20px auto';
-    wrapper.style.maxWidth = '90%';
+    wrapper.style.marginBottom = '20px';
 
     const img = document.createElement('img');
-    img.src = image_url;
-    img.alt = 'Latest live feed image';
+    img.src = feed.image_url;
     img.style.maxWidth = '100%';
-    img.style.height = 'auto';
     img.style.borderRadius = '10px';
     wrapper.appendChild(img);
 
-    const date = new Date(created_at);
+    const date = new Date(feed.created_at);
     const caption = document.createElement('p');
     caption.textContent = `Uploaded on: ${date.toLocaleDateString()} ${date.toLocaleTimeString()}`;
     caption.style.fontSize = '0.9em';
-    caption.style.color = '#666';
+    caption.style.color = '#888';
     wrapper.appendChild(caption);
 
     container.appendChild(wrapper);
@@ -204,6 +201,6 @@ async function loadLatestLiveFeedImage() {
   }
 }
 
-loadLatestLiveFeedImage();
+loadRandomLiveFeedImage();
 setInterval(loadLiveFeeds, 60000);  // Refresh every 60 seconds (optional)
 </script>
