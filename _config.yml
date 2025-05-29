@@ -1,9 +1,9 @@
 title: iPod Puppy Blog
 description: A cozy feed of updates
-baseurl: ""
-url: "https://yourusername.github.io"
+baseurl: ""  # Leave blank unless deploying to a subfolder
+url: "https://yourusername.github.io"  # Replace with your actual GitHub Pages URL
 
 collections:
   comics:
     output: true
-    permalink: /comics/:name
+    permalink: /comics/:title/  # Use :title, not :name
