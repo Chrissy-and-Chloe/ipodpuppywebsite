@@ -10,8 +10,11 @@ title: Comics
 
   <h1>iPodPuppy Comics</h1>
   <div class="comic-feed">
-    {% assign comics = paginator.posts | default: site.comics | sort: "date" | reverse %}
-    {% for comic in comics %}
+    {% assign comics = site.comics | sort: "date" | reverse %}
+    {% assign comics_per_page = 5 %}
+    {% assign start_index = START_INDEX %} <!-- Replace START_INDEX with your desired value (0 for page1, 5 for page2, etc.) -->
+    {% assign limited_comics = comics | slice: start_index, comics_per_page %}
+    {% for comic in limited_comics %}
     <article class="comic-item">
       {% if comic.thumbnail %}
       <div class="comic-banner">
@@ -23,39 +26,24 @@ title: Comics
       <div class="comic-details">
         <h3><a href="{{ comic.url | relative_url }}">{{ comic.title }}</a></h3>
         <p class="comic-date">{{ comic.date | date: "%B %d, %Y" }}</p>
-        <p>{{ comic.excerpt }}</p>
+        <p>{{ comic.content | strip_html | truncatewords: 30 }}</p>
         <a href="{{ comic.url | relative_url }}" class="read-more">Read the full comic →</a>
       </div>
     </article>
     {% endfor %}
   </div>
 
-  {% if paginator %}
   <div class="pagination">
-    {% if paginator.page > 1 %}
-      <a href="{{ paginator.first_page_path | relative_url }}">« First</a>
-      <a href="{{ paginator.previous_page_path | relative_url }}">← Previous</a>
+    {% assign total_comics = site.comics | size %}
+    {% assign total_pages = total_comics | divided_by: comics_per_page %}
+    {% if total_comics modulo comics_per_page != 0 %}
+      {% assign total_pages = total_pages | plus: 1 %}
     {% endif %}
 
-    {% assign total_pages = paginator.total_pages %}
-    {% assign current_page = paginator.page %}
-    {% assign range_start = current_page | minus: 2 | at_least: 1 %}
-    {% assign range_end = current_page | plus: 2 | at_most: total_pages %}
-
-    {% for page in (range_start..range_end) %}
-      {% if page == current_page %}
-        <span class="current">{{ page }}</span>
-      {% else %}
-        <a href="{{ paginator.paginate_path | replace: ':num', page | relative_url }}">{{ page }}</a>
-      {% endif %}
+    {% for page in (1..total_pages) %}
+      <a href="/comics/page{{ page }}.html">{{ page }}</a>
     {% endfor %}
-
-    {% if paginator.page < total_pages %}
-      <a href="{{ paginator.next_page_path | relative_url }}">Next →</a>
-      <a href="{{ paginator.paginate_path | replace: ':num', total_pages | relative_url }}">Last »</a>
-    {% endif %}
   </div>
-  {% endif %}
 </section>
 
 <style>
