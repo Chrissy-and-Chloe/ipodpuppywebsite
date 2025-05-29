@@ -22,7 +22,6 @@ description: las vegas based cartoonist + local philanthropist + your new friend
 
      <h3>Instagram</h3>
 <div style="text-align: center;">
-  <!-- LightWidget WIDGET -->
   <script src="https://cdn.lightwidget.com/widgets/lightwidget.js"></script>
   <iframe 
     src="//lightwidget.com/widgets/7b8715172c6c528d8b907aebd0c18b12.html" 
@@ -114,7 +113,15 @@ button:hover { background-color: #e87b00; }
 }
 </style>
 
-<script>
+<script type="module">
+// 🎨 Initialize Supabase
+import { createClient } from 'https://cdn.jsdelivr.net/npm/@supabase/supabase-js/+esm';
+
+const supabaseUrl = 'https://faqohhfkuvbbiiltngoa.supabase.co';
+const supabaseKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImZhcW9oaGZrdXZiYmlpbHRuZ29hIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDg1NDA1OTEsImV4cCI6MjA2NDExNjU5MX0.s9jgIWZMU_fDUmTlYMDN-Gmjhs546HpgPbZ-ApXhOJg';
+
+const supabaseClient = createClient(supabaseUrl, supabaseKey);
+
 // 🎨 Canvas Drawing Logic
 const canvas = document.getElementById("drawingCanvas");
 const ctx = canvas.getContext("2d");
@@ -140,27 +147,32 @@ document.getElementById("clearCanvas").addEventListener("click", () => {
   ctx.beginPath();
 });
 
-// Submit a message to 'Messages'
-export async function submitMessage(messageText) {
+// 📝 Message Submission
+document.getElementById("submitMessage").addEventListener("click", async () => {
+  const message = document.getElementById("messageInput").value.trim();
+  if (!message) {
+    alert("Please enter a message.");
+    return;
+  }
   const { data, error } = await supabaseClient
     .from('Messages')
-    .insert([{ message: messageText }]);  // Add image_url if desired
-  
+    .insert([{ message, created_at: new Date().toISOString() }]);
   if (error) {
     console.error('Error submitting message:', error);
     alert('Message submission failed.');
   } else {
     alert('Message submitted!');
     console.log('Submitted message:', data);
+    document.getElementById("messageInput").value = "";
   }
-}
+});
 
-// Submit a drawing to 'Drawings'
-export async function submitDrawing(base64Image) {
+// 🎨 Drawing Submission
+document.getElementById("submitDrawing").addEventListener("click", async () => {
+  const dataURL = canvas.toDataURL("image/png");
   const { data, error } = await supabaseClient
     .from('Drawings')
-    .insert([{ image_url: base64Image }]);  // Add message if desired
-  
+    .insert([{ image_url: dataURL, created_at: new Date().toISOString() }]);
   if (error) {
     console.error('Error submitting drawing:', error);
     alert('Drawing submission failed.');
@@ -168,11 +180,5 @@ export async function submitDrawing(base64Image) {
     alert('Drawing submitted!');
     console.log('Submitted drawing:', data);
   }
-}
-</script>
-
-<script type="module">
-  import { fetchData } from '/dynamic/js/supabase.js';
-
-  fetchData();  // This is just a test fetch from 'your_table_name'
+});
 </script>
