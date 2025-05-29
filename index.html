@@ -4,38 +4,49 @@ title: 🐾 ipodpuppy14's page 🐾
 description: las vegas based cartoonist + local philanthropist + your new friend
 ---
 
-
-
 <section class="homepage-wrapper">
+  
+  <!-- 🌐 Live Social Feeds -->
+  <div class="social-feeds">
+    <h2>🌐 iPodPuppy Live Feeds</h2>
+
+    <h3>Reddit</h3>
+    <blockquote class="reddit-card" data-card-created="true">
+      <a href="https://www.reddit.com/r/YourSubreddit/comments/postid">Check out my latest Reddit post!</a>
+    </blockquote>
+    <script async src="https://embed.redditmedia.com/widgets/platform.js" charset="UTF-8"></script>
+
+    <h3>Tumblr</h3>
+    <iframe frameborder="0" scrolling="no" width="400" height="600"
+            src="https://embed.tumblr.com/embed/blog/ipodpuppy14.tumblr.com"></iframe>
+
+    <h3>Instagram</h3>
+    <iframe src="https://lightwidget.com/widgets/YOUR_WIDGET_ID.html" scrolling="no" allowtransparency="true"
+            class="lightwidget-widget" style="width:100%;border:0;overflow:hidden;"></iframe>
+
+    <h3>Bluesky</h3>
+    <a href="https://bsky.app/profile/ipodpuppy.bsky.social" target="_blank">
+      Visit iPodPuppy on Bluesky!
+    </a>
+  </div>
+
   <!-- 🎨 Drawing Submission -->
   <section class="drawing-section">
     <h2>Submit a Drawing!</h2>
-    <canvas id="drawingCanvas" width="400" height="400" style="border:1px solid #000;"></canvas>
-    <br>
+    <canvas id="drawingCanvas" width="400" height="400" style="border:1px solid #000;"></canvas><br>
     <button id="clearCanvas">Clear</button>
     <button id="submitDrawing">Submit Drawing</button>
   </section>
-
+  
   <!-- 📝 Message Submission -->
   <section class="message-section">
     <h2>Leave a Message!</h2>
-    <textarea id="messageInput" rows="4" cols="50" placeholder="Write your message here..."></textarea>
-    <br>
+    <textarea id="messageInput" rows="4" cols="50" placeholder="Write your message here..."></textarea><br>
     <button id="submitMessage">Submit Message</button>
-  </section>
-
-  <!-- 📢 Live Social Embeds -->
-  <section class="live-section">
-    <h2>iPodPuppy Live!</h2>
-    <!-- Example: Twitch Embed -->
-    <iframe src="https://player.twitch.tv/?channel=ipodpuppy" frameborder="0" allowfullscreen="true" scrolling="no" height="378" width="620"></iframe>
-    <!-- Additional embeds (e.g., YouTube, Twitter) can be added here -->
   </section>
 </section>
 
-<div class="crt-note">
-  ✨ This website is best viewed on a CRT monitor ✨
-</div>
+<div class="crt-note">✨ This website is best viewed on a CRT monitor ✨</div>
 
 <footer>
   <div class="home-bottom-gif">
@@ -60,13 +71,11 @@ description: las vegas based cartoonist + local philanthropist + your new friend
   text-align: center;
 }
 
-.drawing-section, .message-section, .live-section {
+.drawing-section, .message-section, .social-feeds {
   margin-bottom: 2em;
 }
 
-canvas {
-  background-color: #fff;
-}
+canvas { background-color: #fff; }
 
 textarea {
   width: 80%;
@@ -83,9 +92,7 @@ button {
   cursor: pointer;
 }
 
-button:hover {
-  background-color: #e87b00;
-}
+button:hover { background-color: #e87b00; }
 
 .home-bottom-gif {
   text-align: center;
