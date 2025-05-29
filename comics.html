@@ -1,6 +1,6 @@
 ---
 layout: default
-title: iPodPuppy Comics
+title: Comics
 ---
 
 <section class="comic-feed-wrapper">
@@ -8,10 +8,11 @@ title: iPodPuppy Comics
     <img src="{{ '/assets/images/comicheader.jpg' | relative_url }}" alt="iPodPuppy Comics Banner">
   </div>
 
+  <h1>iPodPuppy Comics</h1>
   <div class="comic-feed">
     {% assign comics = site.comics | sort: "date" | reverse %}
     {% assign comics_per_page = 5 %}
-    {% assign start_index = 0 %} <!-- The dashboard should replace 0 with the correct start index (e.g., 0, 5, 10) -->
+    {% assign start_index = 0 %} <!-- For page 1; replace with 5 for page 2, etc. -->
     {% assign limited_comics = comics | slice: start_index, comics_per_page %}
     {% for comic in limited_comics %}
     <article class="comic-item">
@@ -32,15 +33,14 @@ title: iPodPuppy Comics
     {% endfor %}
   </div>
 
-  <!-- Optional: If you want static navigation links, add them manually below -->
-  <!--
+  <!-- 🔥 Hardcoded Pagination Bar -->
   <div class="pagination">
     <a href="/comics/page1.html">1</a>
     <a href="/comics/page2.html">2</a>
     <a href="/comics/page3.html">3</a>
-    ...
+    <!-- Add more pages as needed -->
   </div>
-  -->
+
 </section>
 
 <style>
@@ -106,6 +106,30 @@ title: iPodPuppy Comics
 
 .read-more:hover {
   background: #e87b00;
+}
+
+.pagination {
+  margin-top: 2em;
+}
+
+.pagination a, .pagination span {
+  display: inline-block;
+  padding: 0.5em 1em;
+  margin: 0 0.2em;
+  background: #eee;
+  color: #333;
+  text-decoration: none;
+  border-radius: 5px;
+}
+
+.pagination .current {
+  background: #ff9933;
+  color: white;
+}
+
+.pagination a:hover {
+  background: #e87b00;
+  color: white;
 }
 
 @media (max-width: 768px) {
