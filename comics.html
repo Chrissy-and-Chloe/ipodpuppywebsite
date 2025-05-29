@@ -4,6 +4,10 @@ title: Comics
 ---
 
 <section class="comic-feed-wrapper">
+  <div class="banner-container">
+    <img src="{{ '/assets/images/comicheader.jpg' | relative_url }}" alt="iPodPuppy Comics Banner">
+  </div>
+
   <h1>iPodPuppy Comics</h1>
   <div class="comic-feed">
     {% assign sorted_comics = site.comics | sort: "date" | reverse %}
@@ -33,6 +37,17 @@ title: Comics
   max-width: 1000px;
   margin: auto;
   text-align: center;
+}
+
+.banner-container {
+  margin-bottom: 2em;
+}
+
+.banner-container img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+  margin: 0 auto;
 }
 
 .comic-feed {
